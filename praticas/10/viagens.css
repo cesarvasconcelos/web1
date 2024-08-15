@@ -20,3 +20,23 @@ h1 {
 h2 {
     font-size: 110%;
 }
+
+/* Abaixo, deve-se aplicar o estilo CSS ao parágrafo de informações
+   usando fundamentos de box-model */
+
+/* .informacoes {
+  background-color: #66cc99;
+
+  border: 4px dashed white;
+  border-radius: 20px;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 110%;
+  color: #ffffff;
+
+  padding: 25px 25px 25px 80px;
+  margin: 30px 250px 30px 30px;
+
+  font-weight: bold;
+  font-style: italic;
+} */
