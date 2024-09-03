@@ -22,6 +22,7 @@ As documentações oficiais:
 - [HTML Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference)
 - [CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
 - [JavaScript Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
+- [JavaScript First Steps](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps)
 
 Consulte, ainda, o excelente [material](https://ifpb.github.io/lm/) gentilmente
 cedido Prof. Dr. Francisco Dantas, para complementar os estudos.
