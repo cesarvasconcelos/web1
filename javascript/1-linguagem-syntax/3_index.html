@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Alô, JavaScript</title>
+</head>
+
+<body>
+    <p>Observe que conteúdo da página é carregado ANTES
+        que a <code>&lt;script&gt;</code> é executada</p>
+
+    <!--
+        Colocar todo o código JavaScript dentro da <script> block não é uma boa
+        ideia (HTML pode ficar grande demais e difícil de manter).
+        Por isso, vamos colocar o código em um arquivo .js separado e importar
+        o código com atributo src indicando o path do arquivo .js
+        Importante: tem de ter as duas tags <script> de abertura e fechamento!
+        Não faça self-closing com tag única assim: <script src="..." />
+    -->
+    <script src="script3.js"></script>
+
+    <!-- Uma dica final: posso usar mais de uma <script> tag para importar
+múltiplos códigos JavaScript no mesmo HTML
+        <script src="script1.js"></script>
+        <script src="script2.js"></script>
+        <script src="script3.js"></script>
+    -->
+
+</body>
+
+</html>
