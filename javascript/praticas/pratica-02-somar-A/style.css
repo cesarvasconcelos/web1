@@ -1,0 +1,36 @@
+body {
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+
+  background-image: url(math.png);
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+label,
+td {
+  color: darkgreen;
+  font-weight: bold;
+}
+
+#resultado {
+  color: blue;
+  font-weight: bold;
+}
+
+button {
+  background-color: darkgreen;
+  border-radius: 6px;
+  line-height: 4px;
+  cursor: pointer;
+  color: white;
+  border-color: #ffffff00;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-weight: bold;
+}
