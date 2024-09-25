@@ -4,21 +4,6 @@ function cadastrarLivro() {
     resetarCampos();
 }
 
-function inserirLivroTabela(livro) {
-    // obter uma referência ao elemento tbody da table de listagem
-    const tblListagemBody = document.getElementById('tblListagemBody');
-    const novaLinha = criarNovaLinhaComDados(livro);
-
-    tblListagemBody.appendChild(novaLinha);
-}
-
-function criarNovaLinhaComDados(livro) {
-    // Criar novos elementos HTML: nova linha e suas colunas de dados
-    const novaLinha = document.createElement('tr');
-    novaLinha.innerHTML = `<td>${livro.id}</td><td>${livro.titulo}</td><td>${livro.ano}</td>`;
-    return novaLinha;
-}
-
 function criarLivro() {
     // Ler os valores dos dados do livro
     const livroID = document.getElementById('livroID').value; // String
@@ -33,6 +18,21 @@ function criarLivro() {
     };
 
     return livro;
+}
+
+function inserirLivroTabela(livro) {
+    // obter uma referência ao elemento tbody da table de listagem
+    const tblListagemBody = document.getElementById('tblListagemBody');
+    const novaLinha = criarNovaLinhaComDados(livro);
+
+    tblListagemBody.appendChild(novaLinha);
+}
+
+function criarNovaLinhaComDados(livro) {
+    // Criar novos elementos HTML: nova linha e suas colunas de dados
+    const novaLinha = document.createElement('tr');
+    novaLinha.innerHTML = `<td>${livro.id}</td><td>${livro.titulo}</td><td>${livro.ano}</td>`;
+    return novaLinha;
 }
 
 function resetarCampos() {
