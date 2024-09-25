@@ -47,8 +47,8 @@ function apagarCamposHTMLDadosLivro() {
 }
 
 function processarBuscaLivroPorTítulo() {
-    let títuloDesejado = inputBuscarTitulo.value.toLowerCase(); // busca case-insensitive aqui
-    let livroRetornado = buscarLivroNaListaPor(títuloDesejado);
+    const títuloDesejado = inputBuscarTitulo.value.toLowerCase(); // busca case-insensitive aqui
+    const livroRetornado = buscarLivroNaListaPor(títuloDesejado);
 
     mostrarMensagemResultadoBusca(livroRetornado);
     apagarCampoHTMLBuscaTítulo();
