@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Prática Cadastro Livros</title>
+    </head>
+
+    <body>
+        <h2>Cadastro de Livros</h2>
+        <table>
+            <tr>
+                <td><label>Livro ID:</label></td>
+                <td><input type="text" id="livroID" required></td>
+            </tr>
+            <tr>
+                <td><label>Título:</label></td>
+                <td><input type="text" id="livroTitulo"></td>
+            </tr>
+            <tr>
+                <td><label>Ano publicação:</label></td>
+                <td><input type="text" id="livroAno"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button onclick="cadastrarLivro()">Cadastrar Livro</button></td>
+            </tr>
+        </table>
+
+        <h3>Listagem das informações de livros</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Livro ID</th>
+                    <th>Título</th>
+                    <th>Ano de publicação</th>
+                </tr>
+            </thead>
+            <tbody id="tblListagemBody">
+                <!-- Novas linhas de tabela serão adicionadas pelo JavaScript aqui -->
+            </tbody>
+        </table>
+
+        <script src="index.js"></script>
+    </body>
+
+</html>
