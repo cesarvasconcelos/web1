@@ -49,9 +49,13 @@ function resetarCampos() {
 
 function buscarLivroPorTitulo() {
     let parResultadoBusca = document.getElementById('parResultadoBusca');
-    const tituloABuscar = document.getElementById('inputTitulo').value.toLowerCase(); // busca case-insensitive aqui
+    let tituloABuscar = document.getElementById('inputTitulo').value.toLowerCase(); // busca case-insensitive aqui
+    let livroEncontrado = null;
 
-    const livroEncontrado = listaLivros.find(livro => livro.titulo.toLowerCase().includes(tituloABuscar));
+    if (tituloABuscar)
+        livroEncontrado = listaLivros.find(
+            livro => livro.titulo.toLowerCase().includes(tituloABuscar)
+        );
 
     if (livroEncontrado != null) {
         parResultadoBusca.innerHTML =
@@ -61,7 +65,7 @@ function buscarLivroPorTitulo() {
             Ano de Publicação: ${livroEncontrado.ano}`
             ;
     } else {
-        parResultadoBusca.textContent = `Nenhum livro encontrado com o título "${tituloABuscar}".`;
+        parResultadoBusca.textContent = `Nenhum livro encontrado.`;
     }
 
     // resetar elemento HTML input de busca de título
