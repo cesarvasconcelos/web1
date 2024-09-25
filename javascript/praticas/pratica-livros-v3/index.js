@@ -1,75 +1,83 @@
+const corpoTabelaListagem = document.getElementById('tblListagemBody'); // HTML elem
+
+const id = document.getElementById('livroID'); // HTML elem
+const título = document.getElementById('livroTitulo'); // HTML elem
+const ano = document.getElementById('livroAno'); // HTML elem
+const inputBuscarTitulo = document.getElementById('inputBuscarTitulo'); // HTML elem
+
+let mensagemBusca = document.getElementById('parResultadoBusca');
+let livro;
 let listaLivros = [];
 
 function cadastrarLivro() {
-    const livro = criarLivro();
+    livro = criarLivro(id.value, título.value, ano.value);
+
     listaLivros.push(livro);
-
-    inserirLivroTabela(livro);
-    resetarCampos();
+    incluirLivroTabelaListagem();
+    apagarCamposHTMLDadosLivro();
 }
 
-function inserirLivroTabela(livro) {
-    // obter uma referência ao elemento tbody da table de listagem
-    const tblListagemBody = document.getElementById('tblListagemBody');
-    const novaLinha = criarNovaLinhaComDados(livro);
+function criarLivro(umId, umTítulo, umAno) {
+    // criar objeto livro
+    const objetoLivro = {
+        id: umId,
+        titulo: umTítulo,
+        ano: umAno
+    };
 
-    tblListagemBody.appendChild(novaLinha);
+    return objetoLivro;
 }
 
-function criarNovaLinhaComDados(livro) {
-    // Criar novos elementos HTML: nova linha e suas colunas de dados
+function incluirLivroTabelaListagem() {
+    const novaLinha = criarNovaLinhaComDadosLivro();
+    corpoTabelaListagem.appendChild(novaLinha);
+}
+
+function criarNovaLinhaComDadosLivro() {
     const novaLinha = document.createElement('tr');
     novaLinha.innerHTML = `<td>${livro.id}</td><td>${livro.titulo}</td><td>${livro.ano}</td>`;
     return novaLinha;
 }
 
-function criarLivro() {
-    // Ler os valores dos dados do livro
-    const livroID = document.getElementById('livroID').value; // String
-    const livroTítulo = document.getElementById('livroTitulo').value; // String
-    const livroAno = document.getElementById('livroAno').value; // String
-
-    // criar objeto livro
-    const livro = {
-        id: livroID,
-        titulo: livroTítulo,
-        ano: livroAno
-    };
-
-    return livro;
-}
-
-function resetarCampos() {
+function apagarCamposHTMLDadosLivro() {
     // apagar os valores dos campos
-    document.getElementById('livroID').value = '';
-    document.getElementById('livroTitulo').value = '';
-    document.getElementById('livroAno').value = '';
+    id.value = '';
+    título.value = '';
+    ano.value = '';
 }
 
+function buscarLivroPorTítulo() {
+    let títuloDesejado = inputBuscarTitulo.value.toLowerCase(); // busca case-insensitive aqui
+    let livroRetornado = buscarLivroNaListaPor(títuloDesejado);
 
-function buscarLivroPorTitulo() {
-    let parResultadoBusca = document.getElementById('parResultadoBusca');
-    let tituloABuscar = document.getElementById('inputTitulo').value.toLowerCase(); // busca case-insensitive aqui
-    let livroEncontrado = null;
+    mostrarMensagemResultadoBusca(livroRetornado);
+    apagarCampoHTMLBuscaTítulo();
+}
 
-    if (tituloABuscar)
-        livroEncontrado = listaLivros.find(
-            livro => livro.titulo.toLowerCase().includes(tituloABuscar)
+function buscarLivroNaListaPor(título) {
+    let umLivro = null;
+    if (título)
+        umLivro = listaLivros.find(
+            cadaLivro => cadaLivro.titulo.toLowerCase().includes(título)
         );
 
-    if (livroEncontrado != null) {
-        parResultadoBusca.innerHTML =
-            `<strong>Livro encontrado:</strong><br>\
-            Livro ID: ${livroEncontrado.id}<br>\
-            Título: ${livroEncontrado.titulo}<br>\
-            Ano de Publicação: ${livroEncontrado.ano}`
-            ;
-    } else {
-        parResultadoBusca.textContent = `Nenhum livro encontrado.`;
-    }
-
-    // resetar elemento HTML input de busca de título
-    document.getElementById('inputTitulo').value = '';
+    return umLivro;
 }
 
+function mostrarMensagemResultadoBusca(livro) {
+    if (livro != null) {
+        mensagemBusca.innerHTML =
+            `<strong>Livro encontrado:</strong><br>\
+            Livro ID: ${livro.id}<br>\
+            Título: ${livro.titulo}<br>\
+            Ano de Publicação: ${livro.ano}`
+            ;
+    } else {
+        mensagemBusca.textContent = `Nenhum livro encontrado.`;
+    }
+}
 
+function apagarCampoHTMLBuscaTítulo() {
+    // resetar elemento HTML input de busca de título
+    título.value = '';
+}
