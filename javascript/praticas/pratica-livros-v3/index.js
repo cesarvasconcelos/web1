@@ -1,4 +1,4 @@
-const corpoTabelaListagem = document.getElementById('tblListagemBody'); // HTML elem
+const corpoTabelaBusca = document.getElementById('tblListagemBody'); // HTML elem
 
 const id = document.getElementById('livroID'); // HTML elem
 const título = document.getElementById('livroTitulo'); // HTML elem
@@ -9,11 +9,11 @@ let mensagemBusca = document.getElementById('parResultadoBusca');
 let livro;
 let listaLivros = [];
 
-function cadastrarLivro() {
+function efetuarCadastroLivro() {
     livro = criarLivro(id.value, título.value, ano.value);
 
     listaLivros.push(livro);
-    incluirLivroTabelaListagem();
+    incluirLivroTabelaResultadoBusca();
     apagarCamposHTMLDadosLivro();
 }
 
@@ -28,9 +28,9 @@ function criarLivro(umId, umTítulo, umAno) {
     return objetoLivro;
 }
 
-function incluirLivroTabelaListagem() {
+function incluirLivroTabelaResultadoBusca() {
     const novaLinha = criarNovaLinhaComDadosLivro();
-    corpoTabelaListagem.appendChild(novaLinha);
+    corpoTabelaBusca.appendChild(novaLinha);
 }
 
 function criarNovaLinhaComDadosLivro() {
@@ -46,7 +46,7 @@ function apagarCamposHTMLDadosLivro() {
     ano.value = '';
 }
 
-function buscarLivroPorTítulo() {
+function processarBuscaLivroPorTítulo() {
     let títuloDesejado = inputBuscarTitulo.value.toLowerCase(); // busca case-insensitive aqui
     let livroRetornado = buscarLivroNaListaPor(títuloDesejado);
 
