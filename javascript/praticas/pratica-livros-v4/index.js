@@ -20,7 +20,7 @@ function efetuarCadastroLivro() {
 function criarLivro(umId, umTítulo, umAno) {
     // criar objeto livro
     const objetoLivro = {
-        id: umId,
+        id: Number(umId),
         titulo: umTítulo,
         ano: umAno
     };
@@ -38,7 +38,7 @@ function criarNovaLinha() {
     novaLinha.id = livro.id; // cada linha terá o id do livro, i.e., <tr id=livro.id> ...
     novaLinha.innerHTML = `
         <td>${livro.id}</td><td>${livro.titulo}</td><td>${livro.ano}</td>
-        <td><button type="button" onclick="apagarLivroEventHandler(${livro.id})">Apagar</button></td>
+        <td><button class="deleteButton" type="button" onclick="apagarLivroEventHandler(${livro.id})">Apagar</button></td>
     `;
     return novaLinha;
 }
@@ -52,7 +52,7 @@ function apagarLivroEventHandler(livroId) {
 }
 
 function apagarLivroDoArray(livroId) {
-    const index = listaLivros.findIndex(cadaLivro => cadaLivro.id === livroId);
+    const index = listaLivros.findIndex(l => l.id === livroId);
     if (index > -1) {
         listaLivros.splice(index, 1);
     }
