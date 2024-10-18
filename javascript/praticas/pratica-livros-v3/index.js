@@ -7,7 +7,7 @@ const inputBuscarTitulo = document.getElementById('inputBuscarTitulo'); // HTML 
 
 let mensagemBusca = document.getElementById('parResultadoBusca');
 let livro;
-let listaLivros = [];
+let listaLivros = []; // note a lista para armazenar os livros
 
 function efetuarCadastroLivro() {
     livro = criarLivro(id.value, título.value, ano.value);
@@ -79,5 +79,5 @@ function mostrarMensagemResultadoBusca(livro) {
 
 function apagarCampoHTMLBuscaTítulo() {
     // resetar elemento HTML input de busca de título
-    título.value = '';
+    inputBuscarTitulo.value = '';
 }
