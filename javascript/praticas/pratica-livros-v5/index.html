@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Prática Cadastro Livros</title>
+    </head>
+
+    <body>
+        <h2>Cadastro de Livros</h2>
+        <form id="livroForm">
+            <table>
+                <tr>
+                    <td><label>Livro ID:</label></td>
+                    <td><input type="text" id="livroID" required></td>
+                </tr>
+                <tr>
+                    <td><label>Título:</label></td>
+                    <td><input type="text" id="livroTitulo" required></td>
+                </tr>
+                <tr>
+                    <td><label>Ano publicação:</label></td>
+                    <td><input type="text" id="livroAno" required></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit">Cadastrar Livro</button></td>
+                </tr>
+            </table>
+        </form>
+
+        <h3>Listagem das informações de livros</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Livro ID</th>
+                    <th>Título</th>
+                    <th>Ano de publicação</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="tblListagemBody">
+                <!-- Novas linhas de tabela serão adicionadas pelo JavaScript aqui -->
+            </tbody>
+        </table>
+
+        <h3>Busca de livro (por título):</h3>
+        <input type="text" id="inputBuscarTitulo" placeholder="Digite parte do título">
+        <button onclick="processarBuscaLivroPorTítulo()">Buscar</button>
+
+        <h4>Resultado da busca:</h4>
+        <p id="parResultadoBusca">Nenhuma busca foi efetuada ainda.</p>
+
+        <script src="index.js"></script>
+    </body>
+
+</html>
