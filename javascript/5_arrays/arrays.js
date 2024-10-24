@@ -71,6 +71,11 @@ a[10] = "fox";
 console.log(a.length); // 11 células internal storage e não mais length = 4 elementos
 console.log(a); // [ 'dog', 'cat', 'hen', <7 empty items>, 'fox' ]
 
+// e como saber o tamanho 'real' do array a[]?
+let tamanhoReal = 0;
+a.forEach((e) => ++tamanhoReal);
+console.log("Tamanho real de a[]=", tamanhoReal); // 4
+
 // Logo, em um sparse array, há "buracos/gaps" e o length não mais especifica a
 // quantidade de elementos, mas as células na internal storage area.
 // Outro exemplo:
