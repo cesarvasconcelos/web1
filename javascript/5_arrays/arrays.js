@@ -101,14 +101,3 @@ cloneProdutos.splice(0, 2); // remover a partir do index 0, 2 elementos
 
 console.log(cloneProdutos); // agora sim tenho uma cópia real do array
 console.log(produtos); // produtos não foi alterado desta vez
-
-// lembre-se de que um array é um objeto. apesar de não ser tão natural,
-// posso usar um array como um objeto, definindo até mesmo propriedades.
-// neste caso, o interpretador pode optar por transformar a implementação
-// inicial do array em uma hashtable (at runtime)
-let notas = [25, 35, 45];
-console.log(typeof notas); // object
-notas["aluno"] = "Ana Silva"; // uma propriedade no array!
-let nome = notas["aluno"]; // acessando valor da propriedade
-// ou ainda let nome = notas.aluno; // acessando valor da propriedade
-console.log(notas); // [ 25, 35, 45, aluno: 'Ana Silva' ]
