@@ -96,4 +96,4 @@ Considere o seguinte documento HTML para os exercícios:
 
 ---
 
-Esses exercícios cobrem métodos e todas as propriedades mostradas em sala, e cada um deles incentiva o aluno a explorar como navegar entre os elementos e nós do documento HTML usando o DOM em JavaScript.
+Esses exercícios cobrem as principais propriedades mostradas em sala, e cada um deles incentiva o aluno a explorar como navegar entre os elementos e nós do documento HTML usando o DOM em JavaScript.
