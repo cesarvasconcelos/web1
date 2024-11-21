@@ -18,6 +18,16 @@ multiArray = [
 console.log("multiArray[0][1]= ", multiArray[0][1]); // primeiro array, depois elem no index 1
 console.log("multiArray[1][0]= ", multiArray[1][0]); // segundo array, depois elem no index 0
 
+// matriz 3X4
+let matriz34 = [
+	[1, 1, 1, 1],
+	[1, 1, 1, 1],
+	[1, 1, 1, 1],
+];
+
+console.log(matriz34); // [ [ 1, 1, 1, 1 ], [ 1, 1, 1, 1 ], [ 1, 1, 1, 1 ] ]
+
+// sintaxe permite criar arrays de tamanhos variados
 let ragged = [new Array(3), new Array(4)];
 ragged[0][0] = 1;
 ragged[0][1] = 2;
@@ -28,13 +38,9 @@ ragged[1][1] = 5;
 ragged[1][2] = 6;
 ragged[1][3] = 7;
 
-console.log(ragged);
-// array34 = [
-//   [ 1, 2, 3 ],
-//   [ 4, 5, 6, 7 ]
-// ]
+console.log(ragged); // [ [ 1, 2, 3 ], [ 4, 5, 6, 7 ] ]
 
-// a criação permite arrays de tamanhos variados
+// outra criação de arrays de tamanhos variados
 let multiArray2 = [[10, 20], [-35, 50, -12], [7]];
 console.log(multiArray2);
 
