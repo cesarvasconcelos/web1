@@ -18,18 +18,17 @@ multiArray = [
 console.log("multiArray[0][1]= ", multiArray[0][1]); // primeiro array, depois elem no index 1
 console.log("multiArray[1][0]= ", multiArray[1][0]); // segundo array, depois elem no index 0
 
-// outra sintaxe comum para criar matrizes (3x4)
-let matriz3por4 = [new Array(3), new Array(4)];
-matriz3por4[0][0] = 1;
-matriz3por4[0][1] = 2;
-matriz3por4[0][2] = 3;
+let array34 = [new Array(3), new Array(4)];
+array34[0][0] = 1;
+array34[0][1] = 2;
+array34[0][2] = 3;
 
-matriz3por4[1][0] = 4;
-matriz3por4[1][1] = 5;
-matriz3por4[1][2] = 6;
-matriz3por4[1][3] = 7;
+array34[1][0] = 4;
+array34[1][1] = 5;
+array34[1][2] = 6;
+array34[1][3] = 7;
 
-console.log(matriz3por4);
+console.log(array34);
 
 // a criação permite arrays de tamanhos variados
 let multiArray2 = [[10, 20], [-35, 50, -12], [7]];
