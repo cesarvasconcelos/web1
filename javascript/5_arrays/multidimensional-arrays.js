@@ -18,17 +18,21 @@ multiArray = [
 console.log("multiArray[0][1]= ", multiArray[0][1]); // primeiro array, depois elem no index 1
 console.log("multiArray[1][0]= ", multiArray[1][0]); // segundo array, depois elem no index 0
 
-let array34 = [new Array(3), new Array(4)];
-array34[0][0] = 1;
-array34[0][1] = 2;
-array34[0][2] = 3;
+let ragged = [new Array(3), new Array(4)];
+ragged[0][0] = 1;
+ragged[0][1] = 2;
+ragged[0][2] = 3;
 
-array34[1][0] = 4;
-array34[1][1] = 5;
-array34[1][2] = 6;
-array34[1][3] = 7;
+ragged[1][0] = 4;
+ragged[1][1] = 5;
+ragged[1][2] = 6;
+ragged[1][3] = 7;
 
-console.log(array34);
+console.log(ragged);
+// array34 = [
+//   [ 1, 2, 3 ],
+//   [ 4, 5, 6, 7 ]
+// ]
 
 // a criação permite arrays de tamanhos variados
 let multiArray2 = [[10, 20], [-35, 50, -12], [7]];
