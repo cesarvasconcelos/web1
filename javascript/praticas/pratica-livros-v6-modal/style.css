@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    width: 800px;
+    height: 600px;
+    margin: auto;
+
+    position: relative;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: small;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 70px;
+    padding: 10px 20px;
+
+    background: #DAA520;
+    color: #2F4F4F;
+}
+
+.botao {
+    padding: 8px;
+
+    background: green;
+    color: white;
+
+    border: 1px solid green;
+    border-radius: 8px;
+
+    /* https: //developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
+    box-shadow: 1px 2px 9px #00000042;
+    cursor: pointer;
+}
+
+.modal {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 50%;
+
+    /* deve ficar acima da área de background */
+    z-index: 100;
+
+    background: white;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+
+    box-shadow: 1px 2px 9px #00000042;
+    /* display none == invisível */
+    display: none;
+}
+
+.modal.visivel {
+    /* display block == visível novamente */
+    display: block;
+
+    /* https: //developer.mozilla.org/en-US/docs/Web/CSS/animation */
+    animation: fade-slide-in 0.3s ease-out forwards;
+}
+
+#divAreaBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: #000000bf;
+    /* deve ficar abaixo da janela modal de cadastro de livros */
+    z-index: 10;
+
+    /* desabilitar clicks quando estiver invisível */
+    pointer-events: none;
+    /* display none == invisível */
+    display: none;
+}
+
+#divAreaBackground.visivel {
+    /* display block == visível novamente */
+    display: block;
+    /* habilitar clicks quando estiver visível para poder descartar a divAddLivroModal */
+    pointer-events: auto;
+}
+
+.modal .tabela-modal {
+    padding: 5px;
+}
+
+.modal .botoes-modal {
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 5px;
+    gap: 10px;
+}
+
+#divAddLivroModal .tabela-modal {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin: 5px 0px;
+    color: gray;
+}
+
+input {
+    border: 2px solid orange;
+    width: 240px;
+    padding: 5px 10px;
+    color: gray;
+}
+
+input:focus {
+    background: Honeydew;
+}
+
+/* https: //developer.mozilla.org/en-US/docs/Web/CSS/@keyframes */
+@keyframes fade-slide-in {
+    from {
+        /* O elemento começa deslocado -60px para cima de sua posição normal no eixo Y. */
+        transform: translateY(-60px);
+    }
+
+    to {
+        /* O elemento termina em sua posição original no eixo Y (sem offset vertical). */
+        transform: translateY(0);
+    }
+}

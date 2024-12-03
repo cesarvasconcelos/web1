@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+    <head>
+        <meta charset="UTF-8" />
+        <title>Biblioteca Geral</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="index.js" defer></script>
+    </head>
+
+    <body>
+        <div id="main">
+            <div id="divAreaBackground"></div>
+            <div class="modal" id="divAddLivroModal">
+                <div class="tabela-modal">
+                    <table>
+                        <tr>
+                            <td><label>Livro ID:</label></td>
+                            <td><input type="text" id="livroID" required></td>
+                        </tr>
+                        <tr>
+                            <td><label>Título:</label></td>
+                            <td><input type="text" id="livroTitulo" required></td>
+                        </tr>
+                        <tr>
+                            <td><label>Ano publicação:</label></td>
+                            <td><input type="text" id="livroAno" required></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="botoes-modal">
+                    <button id="btnCancelar" class="botao">Cancelar</button>
+                    <button id="btnAdicionar" class="botao">Adicionar</button>
+                </div>
+            </div>
+            <header>
+                <h1>Biblioteca Geral</h1>
+                <button class="botao">Adicionar livro</button>
+            </header>
+
+            <main>
+                <ul id="lista-livros"></ul>
+            </main>
+        </div>
+    </body>
+
+</html>
