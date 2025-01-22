@@ -1,4 +1,3 @@
-// Crie os arquivos list.html e add.html
 // https://www.w3schools.com/jsref/prop_loc_href.asp
 function redirectListHousesHTMLPage() {
 	location.href = "list.html";
