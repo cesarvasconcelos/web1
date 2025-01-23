@@ -28,7 +28,7 @@
 - Acompanhe a explicação do professor quanto às funções utilitárias iniciais existentes em
   `houses-arrays.js`.
 
-- Por fim, implemente duas novas funções utilitárias no arquivo `house-arrays.js`:
+- Agora, implemente duas novas funções utilitárias no arquivo `house-arrays.js`:
     - A primeira deve receber um novo array de casas e atualizar o objeto `sessionStorage` com este
       array, substituindo o anterior completamente
 
@@ -40,18 +40,33 @@
     }
     ```
 
-    - A segunda função será responsável por adicionar um novo objeto casa diretamente no `sessionStorage`
-    - O protótipo deve ser o seguinte:
+    - A segunda função deve adicionar um novo objeto casa diretamente no `sessionStorage`
 
     ```javascript
     function addHouseData(house) {
         const housesArray = getHousesData(); // retorna o array de `sessionStorage`
 
-        // adicione a casa recebida como parâmetro no array de `sessionStorage`
+        // adicione o objeto casa recebido como parâmetro no array de `sessionStorage`
 
-        // chame a função para atualizar `session storage` com este novo array atualizado
+        // passe este novo array de casas para a função que sabe atualizar `sessionStorage`
     }
     ```
 
-   - Por fim, teste a função `addHouseData()` passando como argumento um novo objeto casa e
+   - Teste a função `addHouseData()` passando como argumento um novo objeto casa e
      verifique se `sessionStorage` contém os dados dessa nova casa inserida.
+
+#### Dever de casa:
+
+- Você deve implementar uma função capaz de apagar uma casa do array de `sessionStorage` a partir do `houseId` da casa:
+
+  - O protótipo deve ser o seguinte:
+
+  ```javascript
+    function deleteHouseDataBy(houseId) {
+        // apagar um objeto casa do array de `sessionStorage`
+        // mediante o id da casa recebido como parâmetro.
+        // se o houseId não existir no array de `sessionStorage`,
+        // `sessionStorage` deve continuar com os mesmos objetos casa
+        // que tinha antes (ou seja, nada deve acontecer com os dados anteriores das casas)
+    }
+  ```
