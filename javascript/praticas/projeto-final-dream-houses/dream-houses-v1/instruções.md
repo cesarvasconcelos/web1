@@ -1,4 +1,4 @@
-### Prática DreamHouses - v1.0
+## Projeto DreamHouses - v1.0
 - Observe que os botões da página principal não estão funcionando.
 
 - Crie os arquivos HTML5 `add.html` e `list.html` que serão associados aos botões da página principal

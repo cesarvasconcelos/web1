@@ -1,3 +1,4 @@
+## Projeto DreamHouses - v2.0
 ### Listagem das casas no arquivo `list.html`
 
 - Nesta versão, iremos implementar a listagem das informações das casas existentes no `array` dentro do arquivo `list.html`
