@@ -137,5 +137,9 @@ function createHouseDetailsHTMLText(house) {
 renderHousesDataHTMLPage();
 ```
 
+#### Dever de casa:
+
+- Você deve implementar a funcionalidade de apagar uma casa da página de listagem das casas.
+Lembre-se de que ao apagar uma casa do HTML, os dados da casa também devem ser removidos do array de `sessionStorage` a partir do `houseId` da casa.
 
 
