@@ -1,0 +1,66 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+
+#divMain {
+    width: 800px;
+    height: 500px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+header {
+    background-color: #ffa500;
+    border-bottom: 4px solid #CD853F;
+    height: 17%;
+}
+
+#imgLogo {
+    text-align: center;
+}
+
+#divBotoes {
+    height: 15%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+}
+
+#divBotoes>button {
+    border: none;
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#divBotoes>button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#divBotoes>button:active {
+    background-color: rgb(216, 216, 216);
+    /* box-shadow: 0 5px #666; */
+    transform: translateY(4px);
+}
+
+footer {
+    height: 30%;
+    background-color: gray;
+    border-top: 4px solid dimgray;
+
+    text-align: center;
+    padding-top: 15px;
+    color: whitesmoke;
+    font-size: 10px;
+}
