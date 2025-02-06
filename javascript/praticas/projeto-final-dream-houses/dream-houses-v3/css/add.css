@@ -1,0 +1,130 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+    font-size: small;
+}
+
+h1 {
+    color: #505050;
+}
+
+hr {
+    border-top: 1px dotted #8c8b8b;
+    margin-bottom: 10px;
+}
+
+#divCenter {
+    /* background-color: antiquewhite; */
+    display: flex;
+}
+
+#divUploadImage {
+    background-color: #E8E8E8;
+    /* width: 30%; */
+    width: 424px;
+    height: 283px;
+
+    /* border: 1px solid #8c8b8b; */
+    border: 3px dashed #ccc;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* background-image: url(../images/default-image.png); */
+    /* background-size: cover; */
+}
+
+#divUploadImage img {
+    max-width: 424px;
+    max-height: 283px;
+}
+
+#divUploadImage:hover {
+    background-color: #f0f0f0;
+    /* border-color: #E8E8E8; */
+    cursor: pointer;
+}
+
+#divFormHouseData {
+    padding-left: 30px;
+    color: #505050;
+}
+
+a {
+    color: #505050;
+}
+
+a:hover {
+    color: #ffa500;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: lightgray;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+    color: transparent;
+}
+
+textarea,
+input[type="text"],
+input[type="number"] {
+    border: 1px solid silver;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+textarea {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+input {
+    /* padding: 20px 10px; */
+    line-height: 28px;
+    padding-left: 5px;
+    margin-left: 20px;
+}
+
+#inputAddress {
+    margin-left: 0px;
+}
+
+td {
+    padding-bottom: 10px;
+}
+
+#btnAddHouse {
+    border: none;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+button:active {
+    background-color: rgb(216, 216, 216);
+    /* box-shadow: 0 5px #666; */
+    /* transform: translateY(4px); */
+}
+
+#divFormHouseData p:last-child {
+    text-align: right;
+}

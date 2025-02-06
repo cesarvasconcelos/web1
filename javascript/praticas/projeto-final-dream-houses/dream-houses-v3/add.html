@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add New House</title>
+    </head>
+
+    <body>
+        <h1>Add a New House</h1>
+        <hr>
+        <div id="divCenter">
+            <div id="divLeft">
+                <div id="divUploadImage">
+                    <img id="imagePreview" src="images/default-image.png" alt="Preview of the Uploaded Image">
+                </div>
+                <!-- Image Upload Input -->
+                <input type="file" id="fileInput" accept="image/*">
+            </div>
+            <div id="divFormHouseData">
+                <form id="addHouseForm">
+
+                    <input type="text" id="inputAddress" size=70
+                        placeholder="Type address here, street, suite, apt. #, etc." required><br><br>
+
+                    <hr>
+
+                    <table>
+                        <tr>
+                            <td><label for="inputPrice">Price</label></td>
+                            <td><input type="text" id="inputPrice" size=20 placeholder=" $650,000 e.g.," required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="inputBedrooms">Bedrooms</label></td>
+                            <td><input type="number" id="inputBedrooms" size=70 placeholder=" 4" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="inputBathrooms">Bathrooms</label></td>
+                            <td><input type="number" id="inputBathrooms" size=70 placeholder=" 1" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="inputSquareFeet">Square Feet</label></td>
+                            <td><input type="number" id="inputSquareFeet" size=70 placeholder=" 2500" required>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+
+                    <p id="parDescription"><label for="txtAreaDescription">Description</label></p>
+                    <textarea id="txtAreaDescription" rows="6" cols="70"
+                        placeholder="Type a description here, e.g, 'Modern home with a lovely garden and a garage.' "></textarea>
+                    <hr>
+                </form>
+                <p>
+                    <button id="btnAddHouse" type="button">Add House</button>
+                </p>
+            </div>
+        </div>
+
+        <p><a href="index.html">Back to main page</a></p>
+    </body>
+
+</html>

@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+    font-size: small;
+}
+
+h1 {
+    color: #505050;
+}
+
+hr {
+    border-top: 1px dotted #8c8b8b;
+    margin-bottom: 20px;
+}
+
+/* the div parent container that contains all div houses */
+.house-listing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* a single div for each house */
+.house {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 300px;
+    /* horizontal offset, vertical offset, blur and */
+    /* https: //developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.house img {
+    width: 100%;
+    height: auto;
+}
+
+.house h2 {
+    color: #505050;
+    font-size: 1.1em;
+    /* top & bottom=10px; right & left=0px */
+    margin: 10px 0px;
+}
+
+#btnDelete,
+#btnEdit {
+    color: white;
+    cursor: pointer;
+    font-size: .9em;
+    border-color: #ffffff00;
+}
+
+#btnDelete {
+    background-color: firebrick;
+}
+
+#btnEdit {
+    background-color: steelblue;
+}
+
+#btnEdit:active {
+    /* background-color: rgb(216, 216, 216); */
+    /* box-shadow: 0 5px #666; */
+    background-color: steelblue;
+    transform: translateY(1px);
+}
+
+#btnDelete:active {
+    background-color: firebrick;
+    transform: translateY(1px);
+}
+
+.house p {
+    color: dimgray;
+    /* top & bottom=5px; right & left=0px */
+    margin: 5px 0px;
+}
+
+a {
+    color: #505050;
+}
+
+a:hover {
+    color: #ffa500;
+}
