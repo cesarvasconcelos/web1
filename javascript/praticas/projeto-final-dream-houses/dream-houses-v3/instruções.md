@@ -146,6 +146,7 @@ function addHouseEventHandler() {
 - O protótipo:
 
 ```javascript
+// no arquivo add.js
 function createHouseFromHTMLForm() {
     // inicialmente, não haverá upload da imagem para um servidor; isso ficará para depois
     const houseThumbnail = 'https://i.ibb.co/NVjxzps/h4.jpg' || '<< No Image Url >>';
@@ -193,6 +194,7 @@ function House(thumbnail, address, price, bedrooms, bathrooms, squareFeet, descr
     this.description = description;
 }
 
+// no arquivo houses-arrays.js
 function formatCurrencyUSDDollar(price) {
     const formattedCurrency = new Intl.NumberFormat('en-US', {
         style: 'currency',
