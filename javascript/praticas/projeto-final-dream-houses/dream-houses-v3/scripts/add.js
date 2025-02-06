@@ -1,5 +1,6 @@
 function addHouseEventHandler() {
-	// falta implementar
+	// deve ser chamada no clique do botão do formulário em add.html
 }
 
+// função auxiliar
 function createHouseFromHTMLForm() {}
