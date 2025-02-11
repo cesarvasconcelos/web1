@@ -9,7 +9,7 @@ let undef; // undefined;
 let unknown = null;
 
 console.log("str", typeof str);
-console.log("i", typeof nr);
+console.log("i", typeof i);
 console.log("bigNr", typeof bigNr);
 console.log("bool", typeof bool);
 console.log("sym", typeof sym);
