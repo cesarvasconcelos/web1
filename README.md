@@ -14,7 +14,8 @@ programação.
 ## Material de Referência
 
 Os principais materiais de estudo usados na disciplina são os seguintes livros:
-[Use a Cabeça! HTML e CSS](https://www.amazon.com.br/Use-Cabe%C3%A7a-HTML-Eric-Freeman/dp/8576088622) e [Use a Cabeça! Programação JavaScript](https://www.amazon.com.br/Cabe%C3%A7a-Programa%C3%A7%C3%A3o-Javascript-Eric-Freeman/dp/8576089904).
+[Use a Cabeça! HTML e
+CSS](https://www.amazon.com.br/Use-Cabe%C3%A7a-HTML-Eric-Freeman/dp/8576088622) e [Head First JavaScript Programming: A Learner's Guide to Modern JavaScript](https://a.co/d/6E0dC9N).
 Outras fontes de leitura serão indicadas pelo professor.
 
 As documentações oficiais:
