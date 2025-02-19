@@ -20,26 +20,34 @@ livroForm.addEventListener("submit", function (event) {
 
 function buttonCadastrarLivroHandler() {
 	if (livroSendoEditado) {
-		linhaSendoEditada.cells[0].textContent = id.value;
-		linhaSendoEditada.cells[1].textContent = título.value;
-		linhaSendoEditada.cells[2].textContent = ano.value;
-
-		apagarLivroDoArray(Number(id.value));
-
-		livro = criarLivro(id.value, título.value, ano.value);
-		listaLivros.push(livro);
-
-		document.querySelector("#btnCadastrar").textContent = "Cadastrar";
-		document.querySelector("#btnCadastrar").classList.toggle("saveButton");
-
-		linhaSendoEditada = null;
-		id.disabled = false;
+		editarDadosLivroExistente();
 	} else {
-		livro = criarLivro(id.value, título.value, ano.value);
-		listaLivros.push(livro);
-		incluirLivroTabelaResultadoBusca();
+		cadastrarNovoLivro();
 	}
 	apagarCamposHTMLDadosLivro();
+}
+
+function editarDadosLivroExistente() {
+	linhaSendoEditada.cells[0].textContent = id.value;
+	linhaSendoEditada.cells[1].textContent = título.value;
+	linhaSendoEditada.cells[2].textContent = ano.value;
+
+	apagarLivroDoArray(Number(id.value));
+
+	livro = criarLivro(id.value, título.value, ano.value);
+	listaLivros.push(livro);
+
+	document.querySelector("#btnCadastrar").textContent = "Cadastrar";
+	document.querySelector("#btnCadastrar").classList.toggle("saveButton");
+
+	linhaSendoEditada = null;
+	id.disabled = false;
+}
+
+function cadastrarNovoLivro() {
+	livro = criarLivro(id.value, título.value, ano.value);
+	listaLivros.push(livro);
+	incluirLivroTabelaResultadoBusca();
 }
 
 function criarLivro(umId, umTítulo, umAno) {
