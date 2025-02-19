@@ -25,3 +25,11 @@ td {
     border: none;
     cursor: pointer;
 }
+
+.saveButton {
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 3px;
+}

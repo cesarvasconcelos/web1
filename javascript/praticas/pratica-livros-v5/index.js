@@ -30,9 +30,10 @@ function buttonCadastrarLivroHandler() {
 		listaLivros.push(livro);
 
 		document.querySelector("#btnCadastrar").textContent = "Cadastrar";
+		document.querySelector("#btnCadastrar").classList.toggle("saveButton");
 
-		livroSendoEditado = false;
 		linhaSendoEditada = null;
+		id.disabled = false;
 	} else {
 		livro = criarLivro(id.value, título.value, ano.value);
 		listaLivros.push(livro);
@@ -95,7 +96,11 @@ function editarLivroHandler(livroId) {
 	título.value = livro.título;
 	ano.value = livro.ano;
 
-	document.querySelector("#btnCadastrar").textContent = "Salvar";
+	id.disabled = true;
+
+	document.querySelector("#btnCadastrar").textContent = "Gravar dados";
+	document.querySelector("#btnCadastrar").classList.toggle("saveButton");
+
 	livroSendoEditado = true;
 }
 
