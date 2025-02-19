@@ -18,3 +18,10 @@ td {
     border: none;
     cursor: pointer;
 }
+
+.editButton {
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
