@@ -33,10 +33,8 @@ function editarDadosLivroExistente() {
 	linhaSendoEditada.cells[1].textContent = inputTítulo.value;
 	linhaSendoEditada.cells[2].textContent = inputAno.value;
 
-	apagarLivroDoArray(Number(inputId.value));
-
-	livro = criarLivro(inputId.value, inputTítulo.value, inputAno.value);
-	arrayLivros.push(livro);
+	excluirLivroDoArray(Number(inputId.value));
+	adicionarLivroNoArray();
 
 	document.querySelector("#botãoSubmit").textContent = "Cadastrar";
 	document.querySelector("#botãoSubmit").classList.toggle("saveButton");
@@ -46,13 +44,17 @@ function editarDadosLivroExistente() {
 	inputId.disabled = false;
 }
 
-function cadastrarNovoLivro() {
-	livro = criarLivro(inputId.value, inputTítulo.value, inputAno.value);
+function adicionarLivroNoArray() {
+	livro = criarObjetoLivro(inputId.value, inputTítulo.value, inputAno.value);
 	arrayLivros.push(livro);
-	incluirLivroNaTabelaHTML();
 }
 
-function criarLivro(umId, umTítulo, umAno) {
+function cadastrarNovoLivro() {
+	adicionarLivroNoArray();
+	adicionarLivroNaTabelaHTML();
+}
+
+function criarObjetoLivro(umId, umTítulo, umAno) {
 	// criar objeto livro
 	const objetoLivro = {
 		id: Number(umId),
@@ -63,7 +65,7 @@ function criarLivro(umId, umTítulo, umAno) {
 	return objetoLivro;
 }
 
-function incluirLivroNaTabelaHTML() {
+function adicionarLivroNaTabelaHTML() {
 	const novaLinha = criarNovaLinhaNaTabelaHTML();
 	tabelaListagemLivros.appendChild(novaLinha);
 }
@@ -81,26 +83,30 @@ function criarNovaLinhaNaTabelaHTML() {
 
 function botãoApagarLivroEventHandler(livroId) {
 	if (confirm("Deseja realmente apagar o livro da tabela?")) {
-		apagarLivroDoArray(livroId);
-		apagarLivroDaTabelaHTML(livroId);
+		excluirLivroDoArray(livroId);
+		excluirLivroDaTabelaHTML(livroId);
 	}
 }
 
-function apagarLivroDoArray(livroId) {
+function excluirLivroDoArray(livroId) {
 	const index = arrayLivros.findIndex((l) => l.id === livroId);
 	if (index > -1) {
 		arrayLivros.splice(index, 1);
 	}
 }
 
-function apagarLivroDaTabelaHTML(livroId) {
-	const linha = document.getElementById(String(livroId));
+function excluirLivroDaTabelaHTML(livroId) {
+	const linha = buscarLinhaNaTabelaHTMLPeloId(livroId);
 	linha.parentNode.removeChild(linha);
 }
 
+function buscarLinhaNaTabelaHTMLPeloId(id) {
+	return document.getElementById(String(id));
+}
+
 function botãoEditarLivroEventHandler(livroId) {
-	livro = buscarLivroPorId(livroId);
-	linhaSendoEditada = document.getElementById(String(livroId));
+	livro = buscarLivroNoArrayPorId(livroId);
+	linhaSendoEditada = buscarLinhaNaTabelaHTMLPeloId(livroId);
 
 	inputId.value = String(livro.id);
 	inputTítulo.value = livro.título;
@@ -123,13 +129,13 @@ function apagarCamposFormulárioHTML() {
 
 function botãoBuscarLivroPorTítuloEventHandler() {
 	const títuloDesejado = inputBuscarTítulo.value.toLowerCase(); // busca case-insensitive aqui
-	const livroRetornado = buscarLivroPorTítulo(títuloDesejado);
+	const livroRetornado = buscarLivroNoArrayPorTítulo(títuloDesejado);
 
 	mostrarMensagemResultadoBusca(livroRetornado);
 	apagarCampoHTMLBuscarTítulo();
 }
 
-function buscarLivroPorTítulo(título) {
+function buscarLivroNoArrayPorTítulo(título) {
 	let umLivro = null;
 	if (título)
 		umLivro = arrayLivros.find((cadaLivro) =>
@@ -139,7 +145,7 @@ function buscarLivroPorTítulo(título) {
 	return umLivro;
 }
 
-function buscarLivroPorId(id) {
+function buscarLivroNoArrayPorId(id) {
 	let umLivro = null;
 	if (id)
 		umLivro = arrayLivros.find((cadaLivro) => cadaLivro.id === Number(id));
