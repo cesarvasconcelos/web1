@@ -13,19 +13,19 @@
             <table>
                 <tr>
                     <td><label>Livro ID:</label></td>
-                    <td><input type="text" id="livroID" required></td>
+                    <td><input type="text" id="inputLivroId" required></td>
                 </tr>
                 <tr>
                     <td><label>Título:</label></td>
-                    <td><input type="text" id="livroTitulo" required></td>
+                    <td><input type="text" id="inputLivroTítulo" required></td>
                 </tr>
                 <tr>
                     <td><label>Ano publicação:</label></td>
-                    <td><input type="text" id="livroAno" required></td>
+                    <td><input type="text" id="inputLivroAno" required></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><button id="btnCadastrar" type="submit">Cadastrar Livro</button></td>
+                    <td><button id="botãoSubmit" type="submit">Cadastrar Livro</button></td>
                 </tr>
             </table>
         </form>
@@ -40,17 +40,17 @@
                     <th colspan="2">Ação</th>
                 </tr>
             </thead>
-            <tbody id="tblListagemBody">
+            <tbody id="tabelaListagemLivros">
                 <!-- Novas linhas de tabela serão adicionadas pelo JavaScript aqui -->
             </tbody>
         </table>
 
         <h3>Busca de livro (por título):</h3>
-        <input type="text" id="inputBuscarTitulo" placeholder="Digite parte do título">
-        <button onclick="processarBuscaLivroPorTítulo()">Buscar</button>
+        <input type="text" id="inputBuscarTítulo" placeholder="Digite parte do título">
+        <button onclick="botãoBuscarLivroPorTítuloEventHandler()">Buscar</button>
 
         <h4>Resultado da busca:</h4>
-        <p id="parResultadoBusca">Nenhuma busca foi efetuada ainda.</p>
+        <p id="mensagemResultadoBusca">Nenhuma busca foi efetuada ainda.</p>
 
         <script src="index.js"></script>
     </body>
