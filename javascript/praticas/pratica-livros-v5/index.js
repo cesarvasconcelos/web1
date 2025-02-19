@@ -41,6 +41,7 @@ function editarDadosLivroExistente() {
 	document.querySelector("#btnCadastrar").classList.toggle("saveButton");
 
 	linhaSendoEditada = null;
+	livroSendoEditado = false;
 	id.disabled = false;
 }
 
