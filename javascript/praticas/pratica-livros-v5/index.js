@@ -123,7 +123,7 @@ function buscarLivroPorTítulo(título) {
 	let umLivro = null;
 	if (título)
 		umLivro = listaLivros.find((cadaLivro) =>
-			cadaLivro.titulo.toLowerCase().includes(título)
+			cadaLivro.título.toLowerCase().includes(título)
 		);
 
 	return umLivro;
@@ -141,7 +141,7 @@ function mostrarMensagemResultadoBusca(livro) {
 	if (livro != null) {
 		mensagemBusca.innerHTML = `<strong>Livro encontrado:</strong><br>\
             Livro ID: ${livro.id}<br>\
-            Título: ${livro.titulo}<br>\
+            Título: ${livro.título}<br>\
             Ano de Publicação: ${livro.ano}`;
 	} else {
 		mensagemBusca.textContent = `Nenhum livro encontrado.`;
