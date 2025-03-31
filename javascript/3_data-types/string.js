@@ -33,14 +33,9 @@ let mensagem = '(' + matrícula + ')' + ':' + primeiroNome + ' ' + últimoNome;
 // ou ainda let mensagem = "(" + matrícula + ")" + ":" + primeiroNome + " " + últimoNome;
 console.log(mensagem);
 
-// em vez de asplas simples ('), agora note os backtick (`) caracteres
-mensagem = `(matrícula) + ":" + primeiroNome + " " + últimoNome`;
-console.log(mensagem);
-
 // backtick é útil para criar template strings com string interpolation
+// em vez de asplas simples ('), agora note os backtick (`) caracteres
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-mensagem = `(${matrícula}) + ":" + ${primeiroNome} + " " + ${últimoNome}`;
-console.log(mensagem);
 
 mensagem = `(${matrícula}): ${primeiroNome} ${últimoNome}`;
 console.log(mensagem);
