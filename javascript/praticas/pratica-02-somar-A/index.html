@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt">
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <title>Dobro</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Dobro</title>
+    </head>
 
-<body>
+    <body>
 
-    <table>
-        <tr>
-            <td><label>Digite um número:</label></td>
-            <td><input type="text" id="num1"></td>
-        </tr>
-        <tr>
-            <td><label>Digite outro número:</label></td>
-            <td><input type="text" id="num2"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><button type="button" onclick="somar()">Somar</button></td>
-        </tr>
+        <table>
+            <tr>
+                <td><label>Digite um número:</label></td>
+                <td><input type="text" id="num1"></td>
+            </tr>
+            <tr>
+                <td><label>Digite outro número:</label></td>
+                <td><input type="text" id="num2"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="button" onclick="somar()">Somar</button></td>
+            </tr>
 
-        <tr>
-            <td>Resultado:</td>
-            <td id="resultado">0</td>
-        </tr>
-    </table>
+            <tr>
+                <td>Resultado:</td>
+                <td id="resultado">0</td>
+            </tr>
+        </table>
 
 
-    <script>
-        function somar() {
-            let somatorio = 0
+        <script>
+            function somar() {
+                let somatorio = 0;
 
-            let n1 = document.getElementById("num1").value;
-            let n2 = document.getElementById("num2").value;
+                let n1 = document.getElementById("num1").value;
+                let n2 = document.getElementById("num2").value;
 
-            // sobre parseFloat() built-in function
-            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat
-            // somatorio = parseFloat(n1) + parseFloat(n2);
-            // o cuidado é lembrar que parseFloat('3.14 é o valor de PI') => 3.14
-            // ou seja, faz parse até encontrar caractere não numérico.
-            // Ao contrário de Number('3.14 é o valor de PI'), que retorna NaN
-            somatorio = Number(n1) + Number(n2); // converter string para Number
+                // Nota: sobre a parseFloat() built-in function
+                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat
+                // somatorio = parseFloat(n1) + parseFloat(n2);
+                // o cuidado é lembrar que parseFloat('3.14 é o valor de PI') => 3.14
+                // ou seja, faz parse até encontrar caractere não numérico.
+                // Ao contrário de Number('3.14 é o valor de PI'), que retorna NaN
+                somatorio = Number(n1) + Number(n2); // converter string para Number
 
-            document.getElementById("resultado").innerText = somatorio;
-        }
-    </script>
+                document.getElementById("resultado").textContent = somatorio;
+            }
+        </script>
 
-</body>
+    </body>
 
 </html>
