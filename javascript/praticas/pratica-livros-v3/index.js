@@ -55,18 +55,18 @@ function processarBuscaLivroPorTítulo() {
 }
 
 function buscarLivroNaListaPor(título) {
-	let umLivro = null;
+	let umLivro = undefined;
 	if (título) {
 		umLivro = listaLivros.find((cadaLivro) =>
 			cadaLivro.titulo.toLowerCase().includes(título)
 		);
 	}
 
-	return umLivro;
+	return umLivro; // ou retorna um livro encontrado ou undefined
 }
 
 function mostrarMensagemResultadoBusca(livro) {
-	if (livro != null) {
+	if (livro) {
 		mensagemBusca.innerHTML = `<strong>Livro encontrado:</strong><br>\
             Livro ID: ${livro.id}<br>\
             Título: ${livro.titulo}<br>\
