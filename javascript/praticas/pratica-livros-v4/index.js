@@ -78,7 +78,7 @@ function processarBuscaLivroPorTítulo() {
 }
 
 function buscarLivroNaListaPor(título) {
-	let umLivro = null;
+	let umLivro = undefined;
 	if (título)
 		umLivro = listaLivros.find((cadaLivro) =>
 			cadaLivro.titulo.toLowerCase().includes(título)
@@ -88,7 +88,7 @@ function buscarLivroNaListaPor(título) {
 }
 
 function mostrarMensagemResultadoBusca(livro) {
-	if (livro != null) {
+	if (livro) {
 		mensagemBusca.innerHTML = `<strong>Livro encontrado:</strong><br>\
             Livro ID: ${livro.id}<br>\
             Título: ${livro.titulo}<br>\

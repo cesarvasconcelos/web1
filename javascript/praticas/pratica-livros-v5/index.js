@@ -136,7 +136,7 @@ function botãoBuscarLivroPorTítuloEventHandler() {
 }
 
 function buscarLivroNoArrayPorTítulo(título) {
-	let umLivro = null;
+	let umLivro = undefined;
 	if (título)
 		umLivro = arrayLivros.find((cadaLivro) =>
 			cadaLivro.título.toLowerCase().includes(título)
@@ -154,7 +154,7 @@ function buscarLivroNoArrayPorId(id) {
 }
 
 function mostrarMensagemResultadoBusca(livro) {
-	if (livro != null) {
+	if (livro) {
 		mensagemBusca.innerHTML = `<strong>Livro encontrado:</strong><br>\
             Livro ID: ${livro.id}<br>\
             Título: ${livro.título}<br>\
