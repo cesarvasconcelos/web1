@@ -1,4 +1,4 @@
-Abaixo, segue um resumo indicando quais são os principais **métodos** para adicionar elementos HTML em um documento web usando JavaScript.
+Abaixo, segue um resumo indicando quais são os principais **métodos** para adicionar, remover e manipular elementos HTML em um documento web usando JavaScript.
 
 ---
 
@@ -142,9 +142,37 @@ Abaixo, segue um resumo indicando quais são os principais **métodos** para adi
 
 ---
 
+### 10. **`removeChild()`**
+
+- **Propósito**: Remove um nó filho específico de um elemento pai.
+- **Retorno**: O nó filho removido (que ainda pode ser usado).
+- **Caso de Uso**: Remove elementos do DOM mantendo uma referência para possível reutilização.
+- **Exemplo de Código**:
+  ```javascript
+  const parent = document.getElementById("container");
+  const childToRemove = document.getElementById("elementToRemove");
+  const removedChild = parent.removeChild(childToRemove);
+  // O elemento removido ainda pode ser usado posteriormente
+  ```
+
+---
+
+### 11. **`remove()`**
+
+- **Propósito**: Remove o próprio elemento do DOM.
+- **Retorno**: Nada (`undefined`).
+- **Caso de Uso**: Remove elementos diretamente sem precisar referenciar o nó pai.
+- **Exemplo de Código**:
+  ```javascript
+  const element = document.getElementById("elementToRemove");
+  element.remove(); // Remove o elemento diretamente
+  ```
+
+---
+
 ### Tabela Comparativa:
 
-| **Método**             | **Adiciona ou Substitui?** | **Posição**           | **Suporta Strings?** | **Precisa de Pai?** |
+| **Método**             | **Adiciona, Remove ou Substitui?** | **Posição**           | **Suporta Strings?** | **Precisa de Pai?** |
 |-------------------------|---------------------------|-----------------------|----------------------|---------------------|
 | `appendChild()`         | Adiciona                 | Final dos filhos      | Não                  | Sim                 |
 | `append()`              | Adiciona                 | Final dos filhos      | Sim                  | Sim                 |
@@ -155,7 +183,9 @@ Abaixo, segue um resumo indicando quais são os principais **métodos** para adi
 | `replaceChild()`        | Substitui                | Substitui um filho    | Não                  | Sim                 |
 | `insertAdjacentHTML()`  | Adiciona                 | Relativo ao elemento  | Sim (strings HTML)   | Não                 |
 | `replaceWith()`         | Substitui                | Substitui o elemento  | Sim                  | Não                 |
+| `removeChild()`         | Remove                   | Remove um filho       | Não                  | Sim                 |
+| `remove()`              | Remove                   | Remove o próprio elemento | Não               | Não                 |
 
-Guarde este resumo. Ele destaca quais são os principais **métodos** (funções) para adicionar um
-elemento na árvore DOM. Em particular, os métodos oferecem flexibilidade para adicionar, posicionar
-e substituir elementos ou conteúdo dinamicamente no DOM.
+Guarde este resumo. Ele destaca quais são os principais **métodos** (funções) para adicionar, remover e manipular
+elementos na árvore DOM. Em particular, os métodos oferecem flexibilidade para adicionar, posicionar,
+substituir e remover elementos ou conteúdo dinamicamente no DOM.
