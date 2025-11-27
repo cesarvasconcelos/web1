@@ -59,7 +59,7 @@ function apagarLivroDoArray(livroId) {
 
 function apagarLivroDaTabela(livroId) {
 	const linha = document.getElementById(String(livroId));
-	linha.parentNode.removeChild(linha);
+	linha.remove(); // remove a linha da tabela
 }
 
 function apagarCamposHTMLDadosLivro() {
