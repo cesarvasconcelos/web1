@@ -101,10 +101,6 @@ console.log(notas.indexOf(70)); // 2
 console.log(notas.indexOf(35)); // -1 not found
 console.log(notas.indexOf(20, 2)); // -1, pois encontre elem 20 a partir do index 2 = not found
 
-// findIndex - posição da 1a ocorrência, ou -1 se elemento não for encontrado
-console.log(notas.findIndex((cadaNota) => cadaNota === 70)); // 2
-console.log(notas.findIndex((cadaNota) => cadaNota === 35)); // -1
-
 // última ocorrência, ou -1 se elemento não for encontrado
 notas = [20, 60, 20, 80];
 console.log(notas.lastIndexOf(20)); // 2
@@ -152,7 +148,7 @@ console.log(arr7); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 
 // sub-range
 const arr = [1, 2, 3, 4];
-const range = arr.slice(1, 3);
+const range = arr.slice(1, 3); // retorna um novo array com os elementos do index 1 até o index 3 (não inclusivo)
 console.log(range); // [2, 3]
 // dica: pode usar slice() para copiar e retornar um novo array
 // const newArray = arr.slice(); // sem argumentos um novo array/cópia do original será criado e retornado
