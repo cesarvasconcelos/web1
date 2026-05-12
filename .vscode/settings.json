@@ -4,6 +4,16 @@
     "eslint.enable": false
 }
 
+// O que é npm?
+// npm é o gerenciador de pacotes do Node.js.
+// Ele é usado para instalar bibliotecas, gerenciar dependências
+// no package.json e executar scripts do projeto.
+
+// O que é npx?
+// npx é um executador de pacotes do Node.js (vem com o npm).
+// Ele permite rodar comandos de pacotes sem instalar globalmente,
+// usando a versão local do projeto quando ela existir.
+
 // Explicações dos comandos ESLint:
 // npm install eslint --save-dev
 // Instala o ESLint no projeto como dependência de desenvolvimento
@@ -15,3 +25,6 @@
 // - Faz perguntas sobre seu projeto e padrão de regras
 // - Cria automaticamente o arquivo de configuração
 // - Instala plugins/dependências adicionais quando necessário
+
+// Exemplo para verificar lint via terminal em um arquivo específico:
+// npx eslint javascript/2_variables/0_variables.js
