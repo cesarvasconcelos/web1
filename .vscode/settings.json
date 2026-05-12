@@ -1,0 +1,17 @@
+{
+    // Ativa ou desativa a extensão ESLint no VS Code.
+    // false: o editor não aplica validações/correções do ESLint automaticamente.
+    "eslint.enable": false
+}
+
+// Explicações dos comandos ESLint:
+// npm install eslint --save-dev
+// Instala o ESLint no projeto como dependência de desenvolvimento
+// e adiciona o pacote em devDependencies no package.json.
+
+// npx eslint --init
+// Executa o assistente de configuração do ESLint no terminal.
+// O assistente:
+// - Faz perguntas sobre seu projeto e padrão de regras
+// - Cria automaticamente o arquivo de configuração
+// - Instala plugins/dependências adicionais quando necessário
