@@ -108,7 +108,7 @@ console.log(Boolean(coordXY)); // true
 // Se nenhum dos operandos acionar a parada, o último é retornado, porque o JS chegou ao fim sem
 // conseguir decidir antes.
 
-// Exemplo: quero imprimir ou a entrada válida digitada (e.g., em um HTML) ou uma frase default
+// Exemplo 1: quero imprimir ou a entrada válida digitada (e.g., em um HTML) ou uma frase default
 // Com || (OR) está procurando truthy, quem for true/truthy, já será retornado ou o último se todos forem falsy
 let entradaDigitada = ""; // falsy
 console.log(entradaDigitada || "<< Entrada inválida >>");
@@ -117,12 +117,14 @@ console.log(entradaDigitada || "<< Entrada inválida >>");
 entradaDigitada = "Ana Silva"; // truthy
 console.log(entradaDigitada || "<< Entrada inválida >>");
 
-// Exemplo 3:
+// Exemplo 2: imagine que você tem uma lista de materiais escolares para os alunos bolsistas, mas só
+// quer entregar essa lista para quem tem um email cadastrado (ou seja, um email válido). Se o email
+// for falsy, quero retornar false. Se for truthy, quero retornar a lista de materiais.
 // quero uma função que retorne os materiais para os bolsistas ou false
 // Com && (AND) está procurando falsy, quem for falsy, já será retornado ou o último se todos forem truthy
 function getMateriaisEscolares(email) {
 	let materiais = ["Caneta", "Livro"];
-	return email && materiais; // retorna o email falsy ou a lista de materiais
+	return email && materiais; // retorna o primeiro falsy ou desiste e retorna o último, i.e., o email falsy ou a lista de materiais
 }
 // simulando
 let emailAlunoBolsista = "pedro@gmail.com";
