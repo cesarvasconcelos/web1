@@ -4,7 +4,6 @@
 // linguagens (e.g, Java) que possuem diferenças entre vários tipos de números,
 // JavaScript possui um único tipo para todos eles: Number.
 
-
 // Number, no JavaScript, é, na verdade, um 64bits float-point number.
 // A documentação diz:
 // The Number type is a double-precision 64-bit binary format IEEE 754 value. It
@@ -35,9 +34,24 @@ let oct255 = 0o377; // octal
 let bin255 = 0b11111111; // binário
 let exp255 = 0.255e3; // exponencial
 
-
 console.log(int255 === float255); // true
 console.log(int255 === hex255); // true
 console.log(int255 === oct255); // true
 console.log(int255 === bin255); // true
 console.log(int255 === exp255); // true
+
+// Valores numéricos especiais: também pertencem ao tipo Number
+console.log(1 / 0); // Infinity
+console.log(-1 / 0); // -Infinity
+console.log("abc" / 2); // NaN (Not a Number) —> operação matemática inválida
+
+// NaN é "contagioso": qualquer operação com NaN resulta em NaN
+console.log(NaN + 1); // NaN
+console.log(3 * NaN); // NaN
+console.log(NaN ** 0); // 1 —> única exceção: qualquer valor elevado a 0 é 1
+
+// Matemática em JavaScript é "segura": nunca lança erro fatal, no pior caso retorna NaN
+// Para verificar se um valor é NaN, use Number.isNaN() (não use == NaN, pois NaN !== NaN)
+console.log(Number.isNaN(NaN)); // true
+console.log(Number.isNaN("abc" / 2)); // true
+console.log(Number.isNaN(42)); // false
