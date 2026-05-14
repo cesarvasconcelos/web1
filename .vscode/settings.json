@@ -42,3 +42,18 @@
 // Para verificar se o ESLint ainda está instalado após remover:
 // npm ls eslint --depth=0        → checa no projeto atual
 // npm ls -g eslint --depth=0     → checa na instalação global
+
+// ATENÇÃO: Se ESLint for instalado no lugar errado
+// Se você rodou `npm install` fora da pasta do projeto (ex: na pasta home ~),
+// o package.json e os pacotes serão criados no lugar errado.
+// Para corrigir:
+
+// 1. Remova os pacotes da pasta errada (execute de dentro dela, ex: ~):
+// npm uninstall eslint @eslint/js globals
+
+// 2. Entre na pasta correta do projeto:
+// cd ~/github/web1
+
+// 3. Reinstale o ESLint de dentro do projeto:
+// npm install eslint --save-dev
+// npx eslint --init
