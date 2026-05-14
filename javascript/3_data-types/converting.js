@@ -70,7 +70,7 @@ let coordXY = { x: -5, y: 0 };
 console.log(Boolean(arr1)); // true
 console.log(Boolean(coordXY)); // true
 
-// Abaixo, dois exemplos finais de coerção automática feita pelo JavaScript
+// Abaixo, dois exemplos úteis (e comuns) de coerção automática feita pelo JavaScript
 
 // ─── Macete: || e && não retornam true/false — retornam um dos operandos ───
 //
