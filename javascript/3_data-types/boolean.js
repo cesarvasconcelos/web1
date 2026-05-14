@@ -12,7 +12,7 @@ let ageFieldChecked = false; // campo idade não preenchido
 let isGreater = 4 > 1;
 console.log(isGreater); // true
 
-let isEqual = 5 === "5";
+let isEqual = 5 === "5"; // comparação estrita (===) verifica valor e tipo
 console.log(isEqual); // false (tipos diferentes com ===)
 
 // Qualquer valor pode ser convertido para Boolean (coerção):
