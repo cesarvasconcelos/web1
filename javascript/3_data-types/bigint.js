@@ -2,8 +2,8 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
 // Um BigInt pode suportar números além da faixa padrão de Number, que é:
 // (2^53-1) e (-2^53-1) ou  [-9007199254740991, 0, 9007199254740991]
-//a notacão é pós-fixada com 'n' no final
-const bigNr = 9007199254740992n; // se remover o 'n', verei o Erro: Numeric literals with absolute values equal to 2^53 or greater are too large to be represented accurately as integers.
+// a notação é pós-fixada com 'n' no final
+const bigNr = 9007199254740992n; // se remover o 'n': Erro —> número fora da faixa segura de Number, ou Numeric literals with absolute values equal to 2^53 or greater are too large to be represented accurately as integers.
 
 // cuidado com operações entre tipos number e bigint
 const intNr = 255;
