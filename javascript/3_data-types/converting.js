@@ -72,6 +72,34 @@ console.log(Boolean(coordXY)); // true
 
 // Abaixo, dois exemplos finais de coerção automática feita pelo JavaScript
 
+// ─── Macete: || e && não retornam true/false — retornam um dos operandos ───
+//
+// || (OR) —> "Procuro alguém que dê conta do recado"
+//   O OR quer encontrar um valor truthy. Ele percorre os operandos até achar um
+//   truthy e retorna esse. Se não achar nenhum, retorna o último (desistiu).
+//
+//   false || 0 || "oi"  → "oi"   (achou o primeiro truthy)
+//   false || 0 || ""    → ""     (não achou nenhum, desiste e entrega o último)
+//   "oi"  || "tudo"     → "oi"   (achou no primeiro, nem olha o segundo)
+//
+//   Regra: retorna o primeiro truthy que encontrar; se não achar, desiste e retorna o último.
+//
+// && (AND) —> "Todos precisam dar conta do recado"
+//   O AND quer garantir que tudo é truthy. Percorre esperando truthy e retorna o
+//   último avaliado. Mas se encontrar um falsy, para ali e retorna esse falsy.
+//
+//   "oi" && "tudo" && "bem"  → "bem"  (todos truthy, retorna o último)
+//   "oi" && 0      && "bem"  → 0      (corrente quebrou no 0, para aqui)
+//   0    && "oi"             → 0      (já quebrou no primeiro)
+//
+//   Regra: retorna o primeiro falsy que encontrar; se não achar, retorna o último.
+//
+// Resumo:
+//   ||  está procurando truthy → para e retorna o primeiro truthy (ou o último)
+//   &&  está procurando falsy  → para e retorna o primeiro falsy  (ou o último)
+//   Ambos fazem short-circuit: param assim que já conseguem decidir o resultado.
+// ─────────────────────────────────────────────────────────────────────────────
+
 // Exemplo: quero imprimir ou a entrada válida digitada (e.g., em um HTML) ou uma frase default
 // Com OR, quem for true/truthy, já será retornado. But, If the first value is falsy,
 // then the second value will be returned - even if that operand is also falsy
