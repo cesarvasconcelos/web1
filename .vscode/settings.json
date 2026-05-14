@@ -1,7 +1,7 @@
 {
     // Ativa ou desativa a extensão ESLint no VS Code.
     // false: o editor não aplica validações/correções do ESLint automaticamente.
-    "eslint.enable": false
+    "eslint.enable": true
 }
 
 // O que é npm?
@@ -54,6 +54,10 @@
 // 2. Entre na pasta correta do projeto:
 // cd ~/github/web1
 
-// 3. Reinstale o ESLint de dentro do projeto:
+// 3. Se o projeto ainda não tiver package.json, crie-o:
+// npm init -y
+// O -y responde "sim" para todas as perguntas e gera o package.json com valores padrão.
+
+// 4. Reinstale o ESLint de dentro do projeto:
 // npm install eslint --save-dev
 // npx eslint --init
