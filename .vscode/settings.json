@@ -28,3 +28,17 @@
 
 // Exemplo para verificar lint via terminal em um arquivo específico:
 // npx eslint javascript/2_variables/0_variables.js
+
+// Como desfazer a instalação do ESLint:
+
+// npm uninstall eslint
+// Remove o ESLint do projeto atual e o retira do devDependencies no package.json.
+// É o inverso de `npm install eslint --save-dev`.
+
+// npm uninstall -g eslint
+// Remove o ESLint instalado globalmente na máquina (se houver).
+// Só é necessário se você tiver instalado com `npm install -g eslint` em algum momento.
+
+// Para verificar se o ESLint ainda está instalado após remover:
+// npm ls eslint --depth=0        → checa no projeto atual
+// npm ls -g eslint --depth=0     → checa na instalação global
