@@ -8,6 +8,10 @@
 // a notação é pós-fixada com 'n' no final
 const bigNr = 9007199254740992n; // se remover o 'n': Erro —> número fora da faixa segura de Number, ou Numeric literals with absolute values equal to 2^53 or greater are too large to be represented accurately as integers.
 
+// outro exemplo:
+// o 'n' no final avisa ao JavaScript que é BigInt
+const bigInt = 1234567890123456789012345678901234567890n; // ok
+
 // cuidado com operações entre tipos number e bigint
 const intNr = 255;
 const result = bigNr + intNr; // TypeError: Cannot mix BigInt and other types, use explicit conversions
