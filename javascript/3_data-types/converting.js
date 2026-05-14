@@ -100,6 +100,13 @@ console.log(Boolean(coordXY)); // true
 //   Ambos fazem short-circuit: param assim que já conseguem decidir o resultado.
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Em short-circuit evaluation:
+
+// OR (||) para no primeiro truthy (já decidiu que o resultado é "verdadeiro o suficiente")
+// AND (&&) para no primeiro falsy (já decidiu que a cadeia quebrou)
+
+// Se nenhum dos operandos acionar a parada, o último é retornado — porque o JS chegou ao fim sem conseguir decidir antes.
+
 // Exemplo: quero imprimir ou a entrada válida digitada (e.g., em um HTML) ou uma frase default
 // Com OR, quem for true/truthy, já será retornado. But, If the first value is falsy,
 // then the second value will be returned - even if that operand is also falsy
