@@ -72,7 +72,7 @@ console.log(Boolean(coordXY)); // true
 
 // Abaixo, dois exemplos úteis (e comuns) de coerção automática feita pelo JavaScript
 
-// ─── Macete: || e && não retornam true/false — retornam um dos operandos ───
+// ─── Macete: || e && não retornam true/false: retornam um dos operandos! ───
 //
 // || (OR) —> "Procuro alguém que dê conta do recado"
 //   O OR quer encontrar um valor truthy. Ele percorre os operandos até achar um
@@ -105,11 +105,11 @@ console.log(Boolean(coordXY)); // true
 // OR (||) para no primeiro truthy (já decidiu que o resultado é "verdadeiro o suficiente")
 // AND (&&) para no primeiro falsy (já decidiu que a cadeia quebrou)
 
-// Se nenhum dos operandos acionar a parada, o último é retornado — porque o JS chegou ao fim sem conseguir decidir antes.
+// Se nenhum dos operandos acionar a parada, o último é retornado, porque o JS chegou ao fim sem
+// conseguir decidir antes.
 
 // Exemplo: quero imprimir ou a entrada válida digitada (e.g., em um HTML) ou uma frase default
-// Com OR, quem for true/truthy, já será retornado. But, If the first value is falsy,
-// then the second value will be returned - even if that operand is also falsy
+// Com || (OR) está procurando truthy, quem for true/truthy, já será retornado ou o último se todos forem falsy
 let entradaDigitada = ""; // falsy
 console.log(entradaDigitada || "<< Entrada inválida >>");
 entradaDigitada = null; // falsy
@@ -119,12 +119,10 @@ console.log(entradaDigitada || "<< Entrada inválida >>");
 
 // Exemplo 3:
 // quero uma função que retorne os materiais para os bolsistas ou false
-// Com && (AND), quem conseguir decidir o resultado da expressão será retornado;
-// If the first value if truthy, the && operator ALWAYS returns the second operand),
-// even if that operand it's falsy.
+// Com && (AND) está procurando falsy, quem for falsy, já será retornado ou o último se todos forem truthy
 function getMateriaisEscolares(email) {
 	let materiais = ["Caneta", "Livro"];
-	return email && materiais; // ou retorna o email falsy ou a lista de materiais
+	return email && materiais; // retorna o email falsy ou a lista de materiais
 }
 // simulando
 let emailAlunoBolsista = "pedro@gmail.com";
