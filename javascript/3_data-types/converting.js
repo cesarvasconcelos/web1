@@ -136,8 +136,8 @@ console.log(getMateriaisEscolares(emailAlunoBolsista)); // null (não false —>
 // O exemplo acima resultaria em erro
 
 // testando valores truthy/false com || e &&
-console.log("" || null); // null, If the first value is falsy, then the second will be returned - even if that operand is also falsy
-console.log("ABC" || "DEF"); // ABC, quem for true/truthy, já será retornado. Se todos fossem falsy, seria o último
-console.log("ABC" && "DEF"); // DEF, usando && (AND), quem conseguir decidir o resultado da expressão será retornado;
-console.log("" && "DEF"); // '', usando && (AND), quem conseguir decidir o resultado da expressão será retornado;
-console.log("DEF" && 0); // 0, usando && (AND), quem conseguir decidir o resultado da expressão será retornado;
+console.log("" || null); // null,  usando OR, o primeiro truthy irá decidir o resultado da expressão e será retornado ou o último se todos forem falsy;
+console.log("ABC" || "DEF"); // ABC, usando OR, o primeiro truthy irá decidir o resultado da expressão e será retornado;
+console.log("ABC" && "DEF"); // DEF, usando && (AND), o primeiro falsy irá decidir o resultado da expressão e será retornado;
+console.log("" && "DEF"); // '', usando && (AND), o primeiro falsy irá decidir o resultado da expressão e será retornado;
+console.log("DEF" && 0); // 0, usando && (AND), o primeiro falsy irá decidir o resultado da expressão e será retornado;
