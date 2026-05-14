@@ -95,7 +95,7 @@ function getMateriaisEscolares(email) {
 let emailAlunoBolsista = "pedro@gmail.com";
 console.log(getMateriaisEscolares(emailAlunoBolsista)); // [Caneta,Livro]
 emailAlunoBolsista = null;
-console.log(getMateriaisEscolares(emailAlunoBolsista)); // false
+console.log(getMateriaisEscolares(emailAlunoBolsista)); // null (não false —> retorna o próprio valor falsy)
 
 // Em Java, por exemplo, não há a ideia de truthy ou falsy.
 // O exemplo acima resultaria em erro
