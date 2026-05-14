@@ -17,7 +17,7 @@
 // atribuido ainda nenhum valor a ela
 let nullVar = null; // com null estou atribuindo o valor 'vazio' (apagando qualquer valor)
 console.log(nullVar); // null é um valor e um data type
-console.log(typeof nullVar); // object (BUG)
+console.log(typeof nullVar); // object ← bug histórico do JavaScript!
 
 // Sobre o typeof null retornar object, veja o que diz a referência: "This is a
 // bug that has been there since forever and now cannot be removed due to
