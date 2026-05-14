@@ -18,7 +18,9 @@
 // Number pode representar números inteiros, decimais, exponenciais, em octal,
 // hexadecimal e números binários;
 
-// Um número literal como 255 em JavaScript é um floating-point, não um inteiro
+// Um número literal como 255 em JavaScript é um floating-point, não um inteiro. O fato de ser
+// "floating-point" não impede que JavaScript represente inteiros exatos na faixa segura.
+// 255 === 255.0 // true, ambos são o mesmo Number, apesar de um parecer um inteiro e outro um float
 
 // Documentação diz: "A number literal like 37 in JavaScript code is a
 // floating-point value, not an integer. There is no separate integer type in
