@@ -23,6 +23,7 @@ console.log("unknown", typeof unknown); // "object" ← bug histórico do JavaSc
 
 // typeof de uma função retorna "function" —> mas não existe tipo "function" em JS;
 // funções pertencem ao tipo object. O typeof só as trata de forma especial por conveniência.
+// A documentação do JavaScript oficial diz que: 'It turns out that functions are themselves objects'
 function greet() {}
 console.log(typeof greet); // "function"
 
