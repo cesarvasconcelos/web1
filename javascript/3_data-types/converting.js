@@ -74,7 +74,8 @@ console.log(Boolean(coordXY)); // true
 
 // ─── Macete: || e && não retornam true/false: retornam um dos operandos! ───
 //
-// || (OR) —> "Procuro alguém que dê conta do recado"
+// || (OR) —> "Procuro a primeira ocorrência da verdade. Se encontrar truthy, para e entrega ela. Se não,
+// desisto e entrego o último."
 //   O OR quer encontrar um valor truthy. Ele percorre os operandos até achar um
 //   truthy e retorna esse. Se não achar nenhum, retorna o último (desistiu).
 //
@@ -82,15 +83,16 @@ console.log(Boolean(coordXY)); // true
 //   false || 0 || ""    → ""     (não achou nenhum, desiste e entrega o último)
 //   "oi"  || "tudo"     → "oi"   (achou no primeiro, nem olha o segundo)
 //
-//   Regra: retorna o primeiro truthy que encontrar; se não achar, desiste e retorna o último.
+//   Regra: retorna o primeiro truthy que encontrar; se não achar nenhum, desiste e retorna o último.
 //
-// && (AND) —> "Todos precisam dar conta do recado"
+// && (AND) —> "Todos precisam ser verdadeiros. Se encontrar um falsy, para e entrega ele. Se não,
+// desisto e entrego o último."
 //   O AND quer garantir que tudo é truthy. Percorre esperando truthy e retorna o
 //   último avaliado. Mas se encontrar um falsy, para ali e retorna esse falsy.
 //
 //   "oi" && "tudo" && "bem"  → "bem"  (todos truthy, retorna o último)
 //   "oi" && 0      && "bem"  → 0      (corrente quebrou no 0, para aqui)
-//   0    && "oi"             → 0      (já quebrou no primeiro)
+//   0    && "oi"             → 0      (já quebrou no primeiro 0, nem olha o segundo)
 //
 //   Regra: retorna o primeiro falsy que encontrar; se não achar, retorna o último.
 //
@@ -102,8 +104,8 @@ console.log(Boolean(coordXY)); // true
 
 // Em short-circuit evaluation:
 
-// OR (||) para no primeiro truthy (já decidiu que o resultado é "verdadeiro o suficiente")
-// AND (&&) para no primeiro falsy (já decidiu que a cadeia quebrou)
+// OR (||) para no primeiro truthy, se não achar retorna o último (desiste)
+// AND (&&) para no primeiro falsy, se não achar retorna o último (desiste)
 
 // Se nenhum dos operandos acionar a parada, o último é retornado, porque o JS chegou ao fim sem
 // conseguir decidir antes.
