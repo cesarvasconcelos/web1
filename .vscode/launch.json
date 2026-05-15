@@ -1,15 +1,30 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:3000/javascript/praticas/pratica-livros-v4/index.html",
-            "webRoot": "${workspaceFolder}/javascript/praticas/pratica-livros-v4"
-        }
-    ]
+  // Arquivo de configurações de depuração do VS Code (formato JSON com comentários).
+  //
+  // Explicação das duas opções:
+  // A primeira (file) abre o HTML direto do disco (file://...) e não usa porta.
+  // A segunda (url com localhost:8000) é a que usa servidor na porta 8000.
+  //
+  // Se quiser usar a opção localhost:8000, rode antes no terminal (na raiz do projeto):
+  // python3 -m http.server 8000
+  //
+  // Depois, escolha no VS Code a configuração:
+  // "Debug pratica-livros-v4 (localhost:8000)"
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug pratica-livros-v4 (arquivo)",
+      "file": "${workspaceFolder}/javascript/praticas/pratica-livros-v4/index.html",
+      "webRoot": "${workspaceFolder}/javascript/praticas/pratica-livros-v4"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug pratica-livros-v4 (localhost:8000)",
+      "url": "http://localhost:8000/javascript/praticas/pratica-livros-v4/index.html",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
 }
