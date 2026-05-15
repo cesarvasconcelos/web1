@@ -1,42 +1,42 @@
 function cadastrarLivro() {
-	const livro = criarObjetoLivro();
-	inserirLivroTabelaHtml(livro);
-	resetarCamposFormulárioHtml();
+	const livro = criarLivroComDadosFormulário();
+	adicionarLivroNaTabela(livro);
+	limparCamposFormulário();
 }
 
-function criarObjetoLivro() {
+function criarLivroComDadosFormulário() {
 	// Ler os valores dos dados do livro
-	const livroID = document.getElementById("livroID").value; // String
-	const livroTítulo = document.getElementById("livroTitulo").value; // String
+	const livroId = document.getElementById("livroID").value; // String
+	const livroTitulo = document.getElementById("livroTitulo").value; // String
 	const livroAno = document.getElementById("livroAno").value; // String
 
 	// criar objeto livro
 	const livro = {
-		id: livroID,
-		titulo: livroTítulo,
+		id: livroId,
+		titulo: livroTitulo,
 		ano: livroAno,
 	};
 
 	return livro;
 }
 
-function inserirLivroTabelaHtml(umLivro) {
+function adicionarLivroNaTabela(livro) {
 	// obter uma referência ao elemento tbody da table de listagem
-	const tblListagemBody = document.getElementById("tblListagemBody");
-	const novaLinha = criarLinhaTabelaComDados(umLivro);
+	const corpoTabelaListagem = document.getElementById("tblListagemBody");
+	const novaLinhaTabela = criarLinhaTabelaLivro(livro);
 
-	tblListagemBody.innerHTML += novaLinha;
+	corpoTabelaListagem.innerHTML += novaLinhaTabela;
 }
 
-function criarLinhaTabelaComDados(umLivro) {
+function criarLinhaTabelaLivro(livro) {
 	// Criar novos elementos HTML: nova linha e suas colunas de dados usando template string
 	const novaLinha = `<tr>
-        <td>${umLivro.id}</td><td>${umLivro.titulo}</td><td>${umLivro.ano}</td>
+        <td>${livro.id}</td><td>${livro.titulo}</td><td>${livro.ano}</td>
     </tr>`;
 	return novaLinha;
 }
 
-function resetarCamposFormulárioHtml() {
+function limparCamposFormulário() {
 	// apagar os valores dos campos
 	document.getElementById("livroID").value = "";
 	document.getElementById("livroTitulo").value = "";
