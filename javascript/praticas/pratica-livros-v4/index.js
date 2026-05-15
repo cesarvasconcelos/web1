@@ -1,87 +1,87 @@
-const corpoTabelaBusca = document.getElementById("tblListagemBody"); // HTML elem
+const corpoTabelaListagem = document.getElementById("corpoTabelaListagem"); // HTML elem
 
-const id = document.getElementById("livroID"); // HTML elem
-const título = document.getElementById("livroTitulo"); // HTML elem
-const ano = document.getElementById("livroAno"); // HTML elem
+const inputId = document.getElementById("inputLivroId"); // HTML elem
+const inputTitulo = document.getElementById("inputLivroTitulo"); // HTML elem
+const inputAno = document.getElementById("inputLivroAno"); // HTML elem
 const inputBuscarTitulo = document.getElementById("inputBuscarTitulo"); // HTML elem
 
-let mensagemBusca = document.getElementById("parResultadoBusca");
+let mensagemBusca = document.getElementById("mensagemResultadoBusca");
 let livro;
 let listaLivros = []; // note a lista para armazenar os livros
 
-function efetuarCadastroLivro() {
-	livro = criarLivro(id.value, título.value, ano.value);
+function cadastrarLivro() {
+	livro = criarLivro(inputId.value, inputTitulo.value, inputAno.value);
 
 	listaLivros.push(livro);
-	incluirLivroTabelaResultadoBusca();
-	apagarCamposHTMLDadosLivro();
+	adicionarLivroNaTabela();
+	limparCamposLivro();
 }
 
-function criarLivro(umId, umTítulo, umAno) {
+function criarLivro(umId, umTitulo, umAno) {
 	// criar objeto livro
 	const objetoLivro = {
 		id: Number(umId),
-		titulo: umTítulo,
+		titulo: umTitulo,
 		ano: umAno,
 	};
 
 	return objetoLivro;
 }
 
-function incluirLivroTabelaResultadoBusca() {
-	const novaLinha = criarNovaLinha();
-	corpoTabelaBusca.appendChild(novaLinha);
+function adicionarLivroNaTabela() {
+	const novaLinha = criarLinhaLivro();
+	corpoTabelaListagem.appendChild(novaLinha);
 }
 
-function criarNovaLinha() {
+function criarLinhaLivro() {
 	const novaLinha = document.createElement("tr");
 	novaLinha.id = livro.id; // cada linha terá o id do livro, i.e., <tr id=livro.id> ...
 	novaLinha.innerHTML = `
         <td>${livro.id}</td><td>${livro.titulo}</td><td>${livro.ano}</td>
-        <td><button class="deleteButton" type="button" onclick="apagarLivroEventHandler(${livro.id})">Apagar</button></td>
+        <td><button class="deleteButton" type="button" onclick="onApagarLivro(${livro.id})">Apagar</button></td>
     `;
 	return novaLinha;
 }
 
-function apagarLivroEventHandler(livroId) {
+function onApagarLivro(livroId) {
 	if (confirm("Deseja realmente apagar o livro da tabela?")) {
-		apagarLivroDoArray(livroId);
-		apagarLivroDaTabela(livroId);
+		removerLivroDoArray(livroId);
+		removerLinhaLivro(livroId);
 	}
 }
 
-function apagarLivroDoArray(livroId) {
+function removerLivroDoArray(livroId) {
 	const index = listaLivros.findIndex((l) => l.id === livroId);
 	if (index > -1) {
 		listaLivros.splice(index, 1);
 	}
 }
 
-function apagarLivroDaTabela(livroId) {
+function removerLinhaLivro(livroId) {
 	const linha = document.getElementById(String(livroId));
 	linha.remove(); // remove a linha da tabela
 }
 
-function apagarCamposHTMLDadosLivro() {
-	// apagar os valores dos campos
-	id.value = "";
-	título.value = "";
-	ano.value = "";
+function limparCamposLivro() {
+	// limpar os valores dos campos
+	inputId.value = "";
+	inputTitulo.value = "";
+	inputAno.value = "";
 }
 
-function processarBuscaLivroPorTítulo() {
-	const títuloDesejado = inputBuscarTitulo.value.toLowerCase(); // busca case-insensitive aqui
-	const livroRetornado = buscarLivroNaListaPor(títuloDesejado);
+function onBuscarLivro() {
+	const tituloBuscado = inputBuscarTitulo.value.toLowerCase(); // busca case-insensitive aqui
+	const livroRetornado = buscarLivroNaListaPor(tituloBuscado);
 
 	mostrarMensagemResultadoBusca(livroRetornado);
-	apagarCampoHTMLBuscaTítulo();
+	limparCampoBusca();
 }
 
-function buscarLivroNaListaPor(título) {
+function buscarLivroNaListaPor(titulo) {
 	let umLivro = undefined;
-	if (título)
+	if (titulo)
 		umLivro = listaLivros.find((cadaLivro) =>
-			cadaLivro.titulo.toLowerCase().includes(título)
+			cadaLivro.titulo.toLowerCase().includes(titulo)
 		);
 
 	return umLivro;
@@ -98,12 +98,12 @@ function mostrarMensagemResultadoBusca(livro) {
 	}
 }
 
-function apagarCampoHTMLBuscaTítulo() {
-	// resetar elemento HTML input de busca de título
+function limparCampoBusca() {
+	// limpar elemento HTML input de busca de título
 	inputBuscarTitulo.value = "";
 }
 
-// Em vez do atributo 'onClick=efetuarCadastroLivro()' no <button> do HTML
+// Em vez do atributo 'onClick=cadastrarLivro()' no <button> do HTML
 // posso vincular uma chamada de função a um botão de outra forma:
 const btnCadastrar = document.getElementById("btnCadastrarLivro");
-btnCadastrar.addEventListener("click", efetuarCadastroLivro);
+btnCadastrar.addEventListener("click", cadastrarLivro);
