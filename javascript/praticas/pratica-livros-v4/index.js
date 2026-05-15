@@ -105,5 +105,5 @@ function limparCampoBusca() {
 
 // Em vez do atributo 'onClick=cadastrarLivro()' no <button> do HTML
 // posso vincular uma chamada de função a um botão de outra forma:
-const btnCadastrar = document.getElementById("btnCadastrarLivro");
+const btnCadastrar = document.getElementById("btnCadastrar");
 btnCadastrar.addEventListener("click", onCadastrarLivro);
