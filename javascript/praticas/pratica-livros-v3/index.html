@@ -12,19 +12,19 @@
         <table>
             <tr>
                 <td><label>Livro ID:</label></td>
-                <td><input type="text" id="livroID"></td>
+                <td><input type="text" id="inputLivroId"></td>
             </tr>
             <tr>
                 <td><label>Título:</label></td>
-                <td><input type="text" id="livroTitulo"></td>
+                <td><input type="text" id="inputLivroTitulo"></td>
             </tr>
             <tr>
                 <td><label>Ano publicação:</label></td>
-                <td><input type="text" id="livroAno"></td>
+                <td><input type="text" id="inputLivroAno"></td>
             </tr>
             <tr>
                 <td></td>
-                <td><button onclick="efetuarCadastroLivro()">Cadastrar Livro</button></td>
+                <td><button onclick="cadastrarLivro()">Cadastrar Livro</button></td>
             </tr>
         </table>
 
@@ -44,10 +44,10 @@
 
         <h3>Busca de livro (por título):</h3>
         <input type="text" id="inputBuscarTitulo" placeholder="Digite parte do título">
-        <button onclick="processarBuscaLivroPorTítulo()">Buscar</button>
+        <button onclick="onBuscarLivro()">Buscar</button>
 
         <h4>Resultado da busca:</h4>
-        <p id="parResultadoBusca">Nenhuma busca foi efetuada ainda.</p>
+        <p id="mensagemResultadoBusca">Nenhuma busca foi efetuada ainda.</p>
 
         <script src="index.js"></script>
     </body>

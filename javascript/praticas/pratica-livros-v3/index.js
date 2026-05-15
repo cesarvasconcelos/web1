@@ -1,64 +1,64 @@
 const corpoTabelaListagem = document.getElementById("corpoTabelaListagem"); // HTML elem
 
-const id = document.getElementById("livroID"); // HTML elem
-const título = document.getElementById("livroTitulo"); // HTML elem
-const ano = document.getElementById("livroAno"); // HTML elem
+const inputId = document.getElementById("inputLivroId"); // HTML elem
+const inputTitulo = document.getElementById("inputLivroTitulo"); // HTML elem
+const inputAno = document.getElementById("inputLivroAno"); // HTML elem
 const inputBuscarTitulo = document.getElementById("inputBuscarTitulo"); // HTML elem
 
-let mensagemBusca = document.getElementById("parResultadoBusca");
+let mensagemBusca = document.getElementById("mensagemResultadoBusca");
 let livro;
 let listaLivros = []; // note a lista para armazenar os livros
 
-function efetuarCadastroLivro() {
-	livro = criarLivro(id.value, título.value, ano.value);
+function cadastrarLivro() {
+	livro = criarLivro(inputId.value, inputTitulo.value, inputAno.value);
 
 	listaLivros.push(livro);
-	incluirLivroTabelaResultadoBusca();
-	apagarCamposHTMLDadosLivro();
+	adicionarLivroNaTabela();
+	limparCamposLivro();
 }
 
-function criarLivro(umId, umTítulo, umAno) {
+function criarLivro(umId, umTitulo, umAno) {
 	// criar objeto livro
 	const objetoLivro = {
 		id: umId,
-		titulo: umTítulo,
+		titulo: umTitulo,
 		ano: umAno,
 	};
 
 	return objetoLivro;
 }
 
-function incluirLivroTabelaResultadoBusca() {
-	const novaLinha = criarNovaLinhaComDadosLivro();
+function adicionarLivroNaTabela() {
+	const novaLinha = criarLinhaLivro();
 	corpoTabelaListagem.appendChild(novaLinha);
 }
 
-function criarNovaLinhaComDadosLivro() {
+function criarLinhaLivro() {
 	const novaLinha = document.createElement("tr");
 	novaLinha.innerHTML = `<td>${livro.id}</td><td>${livro.titulo}</td><td>${livro.ano}</td>`;
 	return novaLinha;
 }
 
-function apagarCamposHTMLDadosLivro() {
-	// apagar os valores dos campos
-	id.value = "";
-	título.value = "";
-	ano.value = "";
+function limparCamposLivro() {
+	// limpar os valores dos campos
+	inputId.value = "";
+	inputTitulo.value = "";
+	inputAno.value = "";
 }
 
-function processarBuscaLivroPorTítulo() {
-	const títuloDesejado = inputBuscarTitulo.value.toLowerCase(); // busca case-insensitive aqui
-	const livroRetornado = buscarLivroNaListaPor(títuloDesejado);
+function onBuscarLivro() {
+	const tituloBuscado = inputBuscarTitulo.value.toLowerCase(); // busca case-insensitive aqui
+	const livroRetornado = buscarLivroNaListaPor(tituloBuscado);
 
 	mostrarMensagemResultadoBusca(livroRetornado);
-	apagarCampoHTMLBuscaTítulo();
+	limparCampoBusca();
 }
 
-function buscarLivroNaListaPor(título) {
+function buscarLivroNaListaPor(titulo) {
 	let umLivro = undefined;
-	if (título) {
+	if (titulo) {
 		umLivro = listaLivros.find((cadaLivro) =>
-			cadaLivro.titulo.toLowerCase().includes(título)
+			cadaLivro.titulo.toLowerCase().includes(titulo)
 		);
 	}
 
@@ -76,7 +76,7 @@ function mostrarMensagemResultadoBusca(livro) {
 	}
 }
 
-function apagarCampoHTMLBuscaTítulo() {
-	// resetar elemento HTML input de busca de título
+function limparCampoBusca() {
+	// limpar elemento HTML input de busca de título
 	inputBuscarTitulo.value = "";
 }
