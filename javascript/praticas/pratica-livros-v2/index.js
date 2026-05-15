@@ -1,14 +1,14 @@
 function cadastrarLivro() {
-	const livro = criarLivroComDadosFormulário();
+	const livro = criarLivroDoFormulario();
 	adicionarLivroNaTabela(livro);
-	limparCamposFormulário();
+	limparFormulario();
 }
 
-function criarLivroComDadosFormulário() {
+function criarLivroDoFormulario() {
 	// Ler os valores dos dados do livro
-	const livroId = document.getElementById("livroID").value; // String
-	const livroTitulo = document.getElementById("livroTitulo").value; // String
-	const livroAno = document.getElementById("livroAno").value; // String
+	const livroId = document.getElementById("inputLivroId").value; // String
+	const livroTitulo = document.getElementById("inputLivroTitulo").value; // String
+	const livroAno = document.getElementById("inputLivroAno").value; // String
 
 	// criar objeto livro
 	const livro = {
@@ -22,23 +22,23 @@ function criarLivroComDadosFormulário() {
 
 function adicionarLivroNaTabela(livro) {
 	// obter uma referência ao elemento tbody da table de listagem
-	const corpoTabelaListagem = document.getElementById("tblListagemBody");
-	const novaLinhaTabela = criarLinhaTabelaLivro(livro);
+	const corpoTabelaListagem = document.getElementById("corpoTabelaListagem");
+	const novaLinha = criarLinhaLivro(livro);
 
-	corpoTabelaListagem.innerHTML += novaLinhaTabela;
+	corpoTabelaListagem.innerHTML += novaLinha;
 }
 
-function criarLinhaTabelaLivro(livro) {
-	// Criar novos elementos HTML: nova linha e suas colunas de dados usando template string
+function criarLinhaLivro(livro) {
+	// Criar nova linha e suas células usando template string
 	const novaLinha = `<tr>
         <td>${livro.id}</td><td>${livro.titulo}</td><td>${livro.ano}</td>
     </tr>`;
 	return novaLinha;
 }
 
-function limparCamposFormulário() {
-	// apagar os valores dos campos
-	document.getElementById("livroID").value = "";
-	document.getElementById("livroTitulo").value = "";
-	document.getElementById("livroAno").value = "";
+function limparFormulario() {
+	// limpar os valores dos campos
+	document.getElementById("inputLivroId").value = "";
+	document.getElementById("inputLivroTitulo").value = "";
+	document.getElementById("inputLivroAno").value = "";
 }
