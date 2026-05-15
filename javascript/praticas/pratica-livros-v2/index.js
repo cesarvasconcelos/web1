@@ -1,4 +1,4 @@
-function cadastrarLivro() {
+function onCadastrarLivro() {
 	const livro = criarLivroDoFormulario();
 	adicionarLivroNaTabela(livro);
 	limparFormulario();

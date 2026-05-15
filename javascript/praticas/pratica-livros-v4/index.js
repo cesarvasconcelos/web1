@@ -9,7 +9,7 @@ let mensagemBusca = document.getElementById("mensagemResultadoBusca");
 let livro;
 let listaLivros = []; // note a lista para armazenar os livros
 
-function cadastrarLivro() {
+function onCadastrarLivro() {
 	livro = criarLivro(inputId.value, inputTitulo.value, inputAno.value);
 
 	listaLivros.push(livro);
@@ -106,4 +106,4 @@ function limparCampoBusca() {
 // Em vez do atributo 'onClick=cadastrarLivro()' no <button> do HTML
 // posso vincular uma chamada de função a um botão de outra forma:
 const btnCadastrar = document.getElementById("btnCadastrarLivro");
-btnCadastrar.addEventListener("click", cadastrarLivro);
+btnCadastrar.addEventListener("click", onCadastrarLivro);

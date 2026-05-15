@@ -9,7 +9,7 @@ let mensagemBusca = document.getElementById("mensagemResultadoBusca");
 let livro;
 let listaLivros = []; // note a lista para armazenar os livros
 
-function cadastrarLivro() {
+function onCadastrarLivro() {
 	livro = criarLivro(inputId.value, inputTitulo.value, inputAno.value);
 
 	listaLivros.push(livro);

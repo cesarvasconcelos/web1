@@ -1,4 +1,4 @@
-function cadastrarLivro() {
+function onCadastrarLivro() {
     // obter uma referência ao elemento tbody da table de listagem
     const corpoTabela = document.getElementById('corpoTabelaListagem');
 
