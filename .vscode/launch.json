@@ -3,20 +3,20 @@
     //
     // Explicação das duas opções:
     // A primeira (file) abre o HTML direto do disco (file://...) e não usa porta.
-    // A segunda (url com localhost:8000) é a que usa servidor na porta 8000.
+    // A segunda (url com localhost:8888) é a que usa servidor na porta 8888.
     //
-    // Se quiser usar a opção localhost:8000, rode antes no terminal (na raiz do projeto):
-    // python3 -m http.server 8000
+    // Se quiser usar a opção localhost:8888, rode antes no terminal (na raiz do projeto):
+    // python3 -m http.server 8888
     //
     // Depois, escolha no VS Code a configuração:
-    // "Debug pratica-livros-v4 (localhost:8000)"
+    // "Debug pratica-livros-v4 (localhost:8888)"
     "version": "0.2.0",
     "configurations": [
         {
             "type": "editor-browser",
             "request": "launch",
             "name": "Debug in integrated browser",
-            "url": "http://localhost:8000/javascript/praticas/pratica-livros-v4/index.html",
+            "url": "http://localhost:8888/javascript/praticas/pratica-livros-v4/index.html",
             "webRoot": "${workspaceFolder}"
         },
         {
@@ -30,7 +30,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Debug pratica-livros-v4 (localhost:8000)",
-            "url": "http://localhost:8008/javascript/praticas/pratica-livros-v4/index.html",
+            "url": "http://localhost:8888/javascript/praticas/pratica-livros-v4/index.html",
             "webRoot": "${workspaceFolder}"
         }
     ]
