@@ -13,13 +13,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "editor-browser",
-            "request": "launch",
-            "name": "Debug in integrated browser",
-            "url": "http://localhost:8888/javascript/praticas/pratica-livros-v4/index.html",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
             "type": "chrome",
             "request": "launch",
             "name": "Debug pratica-livros-v4 (arquivo)",
@@ -30,6 +23,13 @@
             "type": "chrome",
             "request": "launch",
             "name": "Debug pratica-livros-v4 (localhost:8888)",
+            "url": "http://localhost:8888/javascript/praticas/pratica-livros-v4/index.html",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "editor-browser",
+            "request": "launch",
+            "name": "Debug in integrated browser",
             "url": "http://localhost:8888/javascript/praticas/pratica-livros-v4/index.html",
             "webRoot": "${workspaceFolder}"
         }
