@@ -29,7 +29,7 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Debug pratica-livros-v4 (localhost:8000)",
+            "name": "Debug pratica-livros-v4 (localhost:8888)",
             "url": "http://localhost:8888/javascript/praticas/pratica-livros-v4/index.html",
             "webRoot": "${workspaceFolder}"
         }
