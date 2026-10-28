@@ -7,12 +7,24 @@
     </head>
 
     <body>
-        <p>(... antes do script) Observe que conteúdo da página é carregado ANTES
-            que o bloco <code>&lt;script&gt;</code> é executado</p>
+        <p id="paragrafo">(... antes do script) Observe que o conteúdo da página é carregado ANTES
+            que o bloco <code>&lt;script&gt;</code> seja executado</p>
 
-        <!-- Usando <script> no final do <body> é outra forma de vincular código JavaScript à página -->
+        <!-- Usar <script> no final do <body> é outra forma de vincular código JavaScript à página.
+            Como o HTML acima já foi processado, o script consegue acessar esses elementos.
+            Fonte: MDN, O que é JavaScript? (Adding JavaScript to a page)
+            https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/What_is_JavaScript -->
         <script>
-            // alert é uma built-in function do JavaScript
+            // COMPARE com 1_script-tag-at-head.html: lá o mesmo console.log mostra null.
+            // Aqui o parser já leu o <p> e o adicionou ao DOM (a árvore de objetos do documento)
+            // ANTES de executar este script, então o JavaScript consegue encontrar o elemento.
+            // Veja no Console (F12, no Chrome):  <p id="paragrafo">(... antes do script) ...</p>
+            // e já seria seguro usar o elemento, por exemplo: elem.textContent = "..."
+            // Fonte: MDN, Document.getElementById()
+            // https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
+            console.log(document.getElementById("paragrafo")); // o elemento <p>
+
+            // alert() é um método de window (Web API do navegador), não da linguagem JavaScript
             alert("Alô, JavaScript!");
         </script>
     </body>

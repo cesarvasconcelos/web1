@@ -1,23 +1,24 @@
-<!-- demonstrando saída implícita de erro no console no Google Dev Tools do Chrome -->
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Console</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Console</title>
+    </head>
 
-<body>
-
-    <p>O <code>console.log()</code> também pode dar dicas sobre erros no código
-        no Google Chrome Dev Tools, quando se tem um código JavaScript vinculado à uma
-        página HTML</p>
-    <script>
-        //  lembrando que para observar a saída implícita de erros no console quando há um JavaScript
-        //  vinculado a um HTML, deve-se usar o Google Chrome Dev Tools
-        const k = 9;
-        k = k + 1; // erro. A saída é capturada no  Google Chrome Dev Tools
-    </script>
-</body>
+    <body>
+        <!-- Demonstra saída implícita de erro no console do DevTools do navegador -->
+        <p>Erros não tratados no código JavaScript também aparecem no console do
+            DevTools do navegador, mesmo sem chamar <code>console.log()</code></p>
+        <script>
+            // O erro é registrado pelo próprio navegador (não pelo console.log).
+            // Abra o DevTools (F12, no Chrome) → aba Console.
+            const k = 9;
+            k = k + 1; // erro: Uncaught TypeError: Assignment to constant variable.
+            // Experimente trocar const por let e veja o erro desaparecer.
+            // Fonte: MDN, TypeError: invalid assignment to const
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Invalid_const_assignment
+        </script>
+    </body>
 
 </html>

@@ -5,23 +5,38 @@
         <meta charset="UTF-8">
         <title>Alô, JavaScript</title>
 
-        <!-- Usando <script> dentro de <head> é uma forma de vincular código JavaScript à página -->
+        <!-- Usar <script> dentro de <head> é uma forma de vincular código JavaScript à página.
+            O navegador PAUSA o parse do HTML, executa o script e só depois continua.
+            Fonte: MDN, <script> - https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script -->
         <script>
-            // alert é uma built-in function do JavaScript
-            // The <script> tag contains JavaScript code which is automatically executed when the
-            // browser processes the tag. The old HTML standard, HTML4, required a script to have a
-            // type. Usually it was type="text/javascript". It’s not required anymore in HTML5, and
-            // the default is JavaScript, so we can omit it.
-            // The language attribute: <script language="javascript"> This attribute was meant to
-            // show the language of the script. This attribute no longer makes sense because
-            // JavaScript is the default language
+            // alert() NÃO faz parte da linguagem JavaScript: é um método de window,
+            // uma Web API fornecida pelo navegador (por isso não existe no Node.js).
+            // Fonte: MDN, Window.alert() - https://developer.mozilla.org/en-US/docs/Web/API/Window/alert
+            //
+            // O atributo type não é necessário: o padrão do HTML5 já é JavaScript.
+            // (No HTML4 era preciso escrever type="text/javascript".)
+            // O atributo language <script language="javascript"> está obsoleto (deprecated) e nunca
+            // foi padronizado.
+            // Fonte: MDN, <script> - atributos type e language
+            // Referência em inglês: https://javascript.info/hello-world#the-script-tag
+            //
+            // ATENÇÃO: aqui o script roda ANTES de o <body> ser processado (parseado).
+            // Por isso, elementos que aparecem DEPOIS do script ainda não existem no DOM.
+            // (Elementos já lidos pelo parser, como <html>, <head> e <title>, já existem.)
+            // Veja o resultado no Console (F12, no Chrome): document.getElementById("paragrafo") → null
+            // e usar esse null daria: TypeError: Cannot set properties of null
+            // Veja o problema e as soluções (defer, fim do <body>) em
+            // 4a_dica-cuidado-com-ordem-script-tag/
+            // Fonte: MDN, Script loading strategies
+            // https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/What_is_JavaScript
+            console.log(document.getElementById("paragrafo")); // null
             alert("Alô, JavaScript!");
         </script>
     </head>
 
     <body>
-        <p>(...depois do script) Observe que conteúdo da página é carregado somente
-            DEPOIS que o bloco <code>&lt;script&gt;</code> é carregado</p>
+        <p id="paragrafo">(...depois do script) Observe que o conteúdo da página é carregado somente
+            DEPOIS que o bloco <code>&lt;script&gt;</code> é executado</p>
     </body>
 
 </html>
