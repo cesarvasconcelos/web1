@@ -11,16 +11,28 @@ const idade = prompt("Qual é a sua idade?");
 // Abra o console (F12) e teste cancelando, deixando vazio e digitando "25".
 const idadeComoNumero = Number(idade);
 console.log("valor bruto:", idade, "| tipo:", typeof idade);
-console.log("após Number():", idadeComoNumero, "| tipo:", typeof idadeComoNumero);
+console.log(
+	"após Number():",
+	idadeComoNumero,
+	"| tipo:",
+	typeof idadeComoNumero,
+);
 // Resultado de Number(idade):
-//   - Cancelar (null) e deixar vazio ("") resultam em 0 (parece uma idade válida, mas não é!)
+//   - Cancelar (null), deixar vazio ("") ou digitar só espaços ("   ") resultam em 0 (parece uma idade válida, mas não é!)
 //   - Texto como "abc" resulta em NaN (Not a Number)
 //   - Digitar "25" resulta em 25
 
-// Por isso verifique null/"" ANTES de converter.
+// Por isso a ordem das verificações importa:
+//   1) null / "" (texto vazio ou só espaços) ANTES de usar o número, pois viram 0
+//   2) NaN em seguida, usando a variável já convertida
 // Use === (comparação estrita) para não depender de conversões automáticas de tipo.
-if (idade === null || idade === "") {
+// NaN nunca é igual a ele mesmo (NaN === NaN é false), então não dá para testar com ===:
+// use Number.isNaN().
+// Fonte: MDN, Number.isNaN() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN
+if (idade === null || idade.trim() === "") {
 	alert("Você cancelou ou não digitou nada.");
+} else if (Number.isNaN(idadeComoNumero)) {
+	alert(`"${idade}" não é um número válido.`);
 } else {
-	alert(`Você disse que tem ${idade} anos!`);
+	alert(`Você disse que tem ${idadeComoNumero} anos!`);
 }

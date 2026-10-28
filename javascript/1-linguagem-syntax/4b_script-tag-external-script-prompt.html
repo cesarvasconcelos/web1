@@ -8,8 +8,10 @@
 
 <body>
     <!-- script externo que usa prompt() e alert(); veja os comentários em script4.js -->
-    <!-- prompt() bloqueia a execução: a página fica em branco até o usuário responder -->
-    <!-- (compare com 1_script-tag-at-head.html e 2_script-tag-end-of-body.html) -->
+    <!-- prompt() e alert() são caixas modais: pausam a execução do JavaScript até o usuário responder -->
+    <!-- Este <body> não tem conteúdo visível, por isso a página aparece vazia por trás do prompt -->
+    <!-- Experimente: adicione um <p> antes do <script> e compare com 2_script-tag-end-of-body.html -->
+    <!-- Fonte: MDN, Window.prompt() - https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt -->
     <script src="script4.js"></script>
 </body>
 
