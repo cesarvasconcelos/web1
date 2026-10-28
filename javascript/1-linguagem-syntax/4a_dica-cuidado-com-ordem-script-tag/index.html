@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <!--
+    Se a tag <script> ficar no <head> e o código JavaScript precisar acessar elementos do HTML,
+    haverá problemas: o script é executado ANTES de o <body> ser processado, então
+    o elemento ainda não existe.
+
+    Há 3 variações abaixo (A, B e C). Deixe ATIVA APENAS UMA por vez!
+    Se duas ficarem ativas, index.js é carregado duas vezes e o segundo carregamento
+    falha com "SyntaxError: Identifier 'elemParagrafo' has already been declared",
+    pois let/const no topo de scripts clássicos compartilham o mesmo escopo global.
+
+    Abra o DevTools (F12, no Chrome) → aba Console para ver os erros.
+
+    Fontes:
+    - MDN, <script> (async, defer): https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script
+    - MDN, Script loading strategies:
+      https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/What_is_JavaScript
+-->
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Ordem da script tag</title>
+
+        <!-- VARIAÇÃO A: <script> no <head>, sem defer (descomente para testar; comente a variação C do body)
+        Um script sem async/defer BLOQUEIA o parser: o navegador
+        a) começa o parse do HTML, b) encontra o script e pausa o parse,
+        c) baixa (load) e executa (evaluate) o script e d) só então retoma o parse.
+        Resultado: document.getElementById("paragrafo") devolve null, porque o <p> ainda não existe.
+        Erro esperado no Console:
+        Uncaught TypeError: Cannot set properties of null (setting 'textContent') -->
+        <!-- <script src="index.js"></script> -->
+
+        <!-- VARIAÇÃO B: <script defer> no <head> (descomente para testar; comente a variação C do body)
+        defer faz o navegador BAIXAR o script cedo, em paralelo ao parse do HTML (sem bloquear),
+        mas só EXECUTÁ-LO depois que o parse termina (e antes do evento DOMContentLoaded).
+        Vários scripts com defer são executados na ordem em que aparecem.
+        defer só vale para scripts externos (com src).
+        Existe também async: executa assim que baixar, sem garantia de ordem. -->
+        <!-- <script src="index.js" defer></script> -->
+    </head>
+
+    <body>
+        <p id="paragrafo">Olá visitante!</p>
+
+        <!-- VARIAÇÃO C (ativa por padrão): <script> no fim do <body>
+        O script só é baixado e executado depois do parse de todo o HTML acima dele.
+        Funciona, mas se o HTML for extenso, o download do script só começa no final,
+        o que atrasa a execução. Por isso a variação B costuma ser preferível. -->
+        <script src="index.js"></script>
+    </body>
+
+</html>
