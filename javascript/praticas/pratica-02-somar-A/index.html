@@ -30,21 +30,56 @@
         </table>
 
 
+        <!--
+        VERSÃO A (a mais simples): todo o JavaScript fica aqui mesmo, dentro do HTML (script "inline").
+        Compare depois com a versão B (pratica-02-somar-B), onde o código vai para um arquivo externo.
+
+        Como este arquivo funciona, passo a passo:
+        1) O navegador lê o HTML de cima para baixo (parse) e monta a tabela, os inputs e o botão.
+        2) Ao chegar neste <script>, o navegador executa o código na hora. Mas, atenção: nesse
+           momento o código só DEFINE (declara) a função somar(). Ele ainda NÃO soma nada.
+        3) Quando o usuário clica no botão, o atributo onclick="somar()" chama a função.
+           Só então o código lê os inputs e escreve o resultado.
+
+        Dica: como somar() só mexe nos elementos da página quando o botão é clicado (e não no
+        momento em que o script é lido), tanto faz o script estar no <head> ou no fim do <body>.
+        A posição só importa quando o código acessa elementos logo ao ser executado
+        (veja arquivos em 1_linguagem-syntax).
+
+        Sobre onclick="..." (handler inline): é o jeito mais simples para começar, mas a MDN
+        recomenda, mais adiante, usar addEventListener() para não misturar JavaScript com HTML.
+        Fonte: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/What_is_JavaScript
+    -->
         <script>
+            // function: declara uma função chamada somar, que não recebe parâmetros
             function somar() {
+                // let: declara uma variável. Começa em 0 e será substituída pelo resultado
                 let somatorio = 0;
 
+                // document é o "documento HTML" já transformado em objetos (o DOM).
+                // getElementById("num1") encontra o elemento que tem id="num1" (o primeiro input).
+                // .value é o texto que o usuário digitou nele.
+                // IMPORTANTE: .value é SEMPRE uma string (texto), mesmo que o usuário digite 5.
+                // Então n1 e n2 aqui são textos, por exemplo "2" e "3", e não os números 2 e 3.
+                // Fonte: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/value
                 let n1 = document.getElementById("num1").value;
                 let n2 = document.getElementById("num2").value;
 
-                // Nota: sobre a parseFloat() built-in function
+                // Experimente (e veja o resultado na página): trocando a linha abaixo por
+                //   somatorio = n1 + n2;
+                // com 2 e 3 o resultado será "23" e não 5! O + com textos CONCATENA (junta os textos).
+                // Por isso precisamos converter de string para número antes de somar.
+
+                // sobre parseFloat() built-in function
                 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat
                 // somatorio = parseFloat(n1) + parseFloat(n2);
                 // o cuidado é lembrar que parseFloat('3.14 é o valor de PI') => 3.14
                 // ou seja, faz parse até encontrar caractere não numérico.
                 // Ao contrário de Number('3.14 é o valor de PI'), que retorna NaN
+                // Fonte do Number(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
                 somatorio = Number(n1) + Number(n2); // converter string para Number
 
+                // textContent troca o texto que aparece dentro do elemento <td id="resultado">
                 document.getElementById("resultado").textContent = somatorio;
             }
         </script>
