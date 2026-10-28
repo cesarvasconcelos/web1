@@ -7,7 +7,7 @@
     </head>
 
     <body>
-        <p>Observe que o conteúdo da página é carregado ANTES
+        <p id="paragrafo">Observe que o conteúdo da página é carregado ANTES
             que o <code>&lt;script&gt;</code> seja executado</p>
 
         <!--
@@ -31,11 +31,18 @@
         -->
         <script src="script3.js"></script>
 
+        <!-- COMPARE com 2_script-tag-end-of-body.html: o que importa é a POSIÇÃO da tag
+            <script> no HTML, não se o código está inline ou em arquivo separado.
+            Como esta tag está depois do <p id="paragrafo"> (no final do <body>), o parser
+            já leu o parágrafo quando o navegador baixa e executa script3.js.
+            Por isso, o script externo consegue acessar o elemento e ler seu textContent.
+            Se a tag estivesse no <head>, o resultado seria null (veja 1_script-tag-at-head.html). -->
+
         <!-- Os atributos type e language não são necessários.
             Um script externo é inserido com <script src="caminho/para/script.js"></script> -->
 
         <!-- Dica final: pode-se usar mais de uma tag <script> para importar vários arquivos
-            JavaScript no mesmo HTML. Eles são executados NA ORDEM em que aparecem
+            JavaScript no mesmo HTML. Eles são executados NA ORDEM em que aparecema
             (veja 4a_dica-cuidado-com-ordem-script-tag):
 
             <script src="/js/script1.js"></script>
