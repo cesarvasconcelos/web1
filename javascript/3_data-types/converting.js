@@ -1,11 +1,16 @@
-// Convertendo data types
+// Convertendo data types (conversão de tipos)
+// Fonte principal: https://javascript.info/type-conversions
+// MDN: https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion
+// Obs.: aqui tratamos só de tipos primitivos; a conversão de objetos é vista em
+// https://javascript.info/object-toprimitive
 
 // primeiro, note como é perigoso confiar em algumas conversões automáticas do JS
 let n1 = 4;
 let n2 = "6";
 
 console.log(n1 * n2); // 24, mas bem que JavaScript poderia evitar isso :(
-console.log(n1 + n2); // "46"
+console.log(n1 + n2); // "46" ← com +, se um dos lados for string, o JS CONCATENA
+console.log("6" / "2"); // 3, em operações matemáticas (/, *, -) as strings viram numbers
 
 // Como se vê, algumas vezes o JavaScript realiza a conversão automática e
 // outras não. Para não ter de se apoiar nessas conversões inesperadas,
@@ -14,17 +19,21 @@ console.log(n1 + n2); // "46"
 // Três built-in functions para conversão você deve lembrar:
 // String(), Number() e Boolean()
 
-// String(): praticamente qualquer valor, incluindo undefined e null,
-// e tenta converter pra string
+// String(): recebe praticamente qualquer valor, incluindo undefined e null,
+// e converte para string. A conversão para string acontece também automaticamente
+// quando precisamos exibir um valor (e.g., console.log, alert).
+// O resultado é geralmente "óbvio": false vira "false", null vira "null" etc.
 let nrToStr = 66;
 nrToStr = String(nrToStr);
 console.log(nrToStr, typeof nrToStr); // 66 string
 
-console.log(typeof String(undefined)); // string
-console.log(typeof String(null)); // string
+console.log(String(undefined), typeof String(undefined)); // undefined string
+console.log(String(null), typeof String(null)); // null string
+console.log(String(false), typeof String(false)); // false string
 
 // Number(): tenta converter para um data type number. Se não conseguir, retorna
-// NaN
+// NaN. A conversão explícita é muito comum ao ler valores de fontes baseadas
+// em texto, como campos de formulário HTML (tudo chega como string!)
 let strToNr = "1234";
 let pass = "1234***";
 strToNr = Number(strToNr);
@@ -33,7 +42,7 @@ pass = Number(pass);
 console.log(strToNr, typeof strToNr); //1234 number
 console.log(pass, typeof pass); //NaN number
 
-// atenção para null e string vazia, que sempre resulta em 0
+// atenção para null e string vazia, que sempre resultam em 0
 let emptyStr = "";
 let nu = null;
 emptyStr = Number(emptyStr);
@@ -41,8 +50,24 @@ nu = Number(nu);
 console.log(emptyStr, typeof emptyStr); // 0 number
 console.log(nu, typeof nu); // 0 number
 
+// Regras de conversão para number (javascript.info):
+//   undefined      → NaN   ← pegadinha: NÃO é 0!
+//   null           → 0
+//   true / false   → 1 / 0
+//   string         → espaços em branco (espaços, \t, \n...) do início e do fim são
+//                    removidos. Se sobrar string vazia → 0. Senão, o número é "lido"
+//                    da string; se houver erro → NaN.
+console.log(Number(undefined)); // NaN
+console.log(Number(true)); // 1
+console.log(Number(false)); // 0
+console.log(Number("   123   ")); // 123 (espaços do início e do fim são ignorados)
+console.log(Number("123z")); // NaN (erro ao ler o "z")
+console.log(Number(" \n\t ")); // 0 (só espaços em branco → string vazia → 0)
+
 // Boolean(): irá converter para boolean, retornando true para qualquer coisa que
 // não seja false, null, undefined, 0 (number), uma string vazia e NaN.
+// Regra intuitiva: valores "vazios" viram false; todo o resto vira true.
+// Acontece automaticamente em operações lógicas (if, ||, &&, !...)
 
 // A documentação: https://developer.mozilla.org/en-US/docs/Glossary/Falsy
 // Any value can be converted to a boolean according to the following rules:
@@ -60,7 +85,9 @@ console.log(Boolean(0)); // false
 console.log(Boolean("")); // false
 console.log(Boolean(NaN)); // false
 
-console.log(Boolean("false")); // true, qualquer string será convertida para true, mesmo que com conteúdo false
+console.log(Boolean("false")); // true, qualquer string não vazia será convertida para true, mesmo que com conteúdo false
+console.log(Boolean("0")); // true ← pegadinha: a string "0" não é vazia (em PHP seria false)
+console.log(Boolean(" ")); // true ← string só com espaço também não é vazia
 
 // arrays e objects (serão vistos mais adiante)
 // são tratados como true na coerção para Boolean
@@ -143,3 +170,12 @@ console.log("ABC" || "DEF"); // ABC, usando OR, o primeiro truthy irá decidir o
 console.log("ABC" && "DEF"); // DEF, usando && (AND), o primeiro falsy irá decidir o resultado da expressão e será retornado;
 console.log("" && "DEF"); // '', usando && (AND), o primeiro falsy irá decidir o resultado da expressão e será retornado;
 console.log("DEF" && 0); // 0, usando && (AND), o primeiro falsy irá decidir o resultado da expressão e será retornado;
+
+// Resumo das pegadinhas mais comuns (javascript.info):
+//   Number(undefined) → NaN (e não 0)
+//   Number("")        → 0
+//   Boolean("0")      → true
+//   Boolean(" ")      → true
+// Mais sobre || e &&: https://javascript.info/logical-operators
+// MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR
+//      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND
