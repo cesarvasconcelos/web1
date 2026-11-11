@@ -67,35 +67,19 @@ console.log(Array.of(3)); // [ 3 ]                   -> Array.of NÃO tem essa a
 
 // Criando arrays já preenchidos:
 console.log(new Array(3).fill(0)); // [ 0, 0, 0 ]
-console.log(Array.from({ length: 5 }, (_, i) => i * 10)); // [ 0, 10, 20, 30, 40 ]
-// Array.from(arrayLike, mapFn): o 2º argumento é uma função aplicada a cada posição,
-// que recebe (valorAtual, indice) -> aqui escrita como (_, i): "_" = valorAtual, "i" = indice
+console.log(Array.from([1, 2, 3, 4, 5], (valor) => valor * 10)); // [ 10, 20, 30, 40, 50 ]
+// Array.from(origem, mapFn): cria um array NOVO a partir de "origem".
+//   - 1º argumento: um array (ou outro iterável, como uma string).
+//   - 2º argumento (opcional): uma função aplicada a CADA elemento, que recebe
+//     (valor, indice), igual ao map(). Aqui só usamos o "valor".
 //
-// O que é { length: 5 }?
-//   É um objeto comum que só tem a propriedade "length" — um "array-like"
-//   (objeto parecido com array). Array.from aceita qualquer coisa que tenha
-//   length (ou seja iterável) e cria um array REAL com esse tamanho.
-//   Como o objeto não tem as chaves 0, 1, 2, 3, 4, cada posição é lida como
-//   undefined:
-//     Array.from({ length: 5 }); // [ undefined, undefined, undefined, undefined, undefined ]
-//   Vantagem sobre new Array(5): não gera "empty items" (buracos), então
-//   métodos como map/forEach funcionam normalmente em todas as posições.
+// Passo a passo: 1*10=10 | 2*10=20 | 3*10=30 | 4*10=40 | 5*10=50
 //
-// O que é (_, i)?
-//   São os parâmetros da função de mapeamento (mapFn). Array.from chama essa
-//   função para cada posição passando (valorAtual, indice) — igual ao map():
-//     - 1º parâmetro "_" -> o valor atual do elemento (aqui sempre undefined).
-//       O nome "_" é só uma CONVENÇÃO para dizer "não vou usar este parâmetro".
-//       Não é palavra reservada: é um nome de variável válido como qualquer outro.
-//       Precisamos declará-lo mesmo sem usar, porque os parâmetros são
-//       POSICIONAIS: para chegar ao 2º (o índice), temos que "ocupar" o 1º.
-//     - 2º parâmetro "i" -> o índice da posição: 0, 1, 2, 3, 4.
-//   Passo a passo: i=0 -> 0*10=0 | i=1 -> 10 | i=2 -> 20 | i=3 -> 30 | i=4 -> 40
+// Sem a função, Array.from apenas copia o array:
+//   Array.from([1, 2, 3]); // [ 1, 2, 3 ] (cópia nova, não a mesma referência)
 //
-// Forma equivalente, mais verbosa:
-//   Array.from({ length: 5 }, function (valor, indice) { return indice * 10; });
-// Outro uso comum (sequência 1..5):
-//   Array.from({ length: 5 }, (_, i) => i + 1); // [ 1, 2, 3, 4, 5 ]
+// Usando o índice (2º parâmetro da função):
+//   Array.from(["a", "b", "c"], (valor, indice) => `${indice}:${valor}`); // [ '0:a', '1:b', '2:c' ]
 
 // -----------------------------------------------------------------------------
 // 2. Acessando elementos: índice, length e at()
@@ -192,8 +176,6 @@ console.log(comBuraco[1], comUndefined[1]); // undefined undefined  (lendo, pare
 // - 1 in comUndefined é true, porque o índice 1 existe com valor undefined.
 // Por isso `in` distingue "ausente" de "presente com valor undefined", algo que arr[i] não faz.
 // Também funciona com objetos: 'nome' in pessoa.
-// Atenção: `in` consulta também a cadeia de protótipos ('toString' in {} -> true).
-// Para checar apenas as propriedades próprias, use Object.hasOwn(obj, chave).
 console.log(1 in comBuraco, 1 in comUndefined); // false true  (...mas não são!)
 // Alguns métodos (forEach, map, filter, reduce...) PULAM buracos; for...of e find() NÃO pulam.
 
