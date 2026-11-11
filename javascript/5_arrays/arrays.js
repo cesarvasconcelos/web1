@@ -68,7 +68,34 @@ console.log(Array.of(3)); // [ 3 ]                   -> Array.of NÃO tem essa a
 // Criando arrays já preenchidos:
 console.log(new Array(3).fill(0)); // [ 0, 0, 0 ]
 console.log(Array.from({ length: 5 }, (_, i) => i * 10)); // [ 0, 10, 20, 30, 40 ]
-// Array.from(arrayLike, mapFn): o 2º argumento é uma função aplicada a cada posição
+// Array.from(arrayLike, mapFn): o 2º argumento é uma função aplicada a cada posição,
+// que recebe (valorAtual, indice) -> aqui escrita como (_, i): "_" = valorAtual, "i" = indice
+//
+// O que é { length: 5 }?
+//   É um objeto comum que só tem a propriedade "length" — um "array-like"
+//   (objeto parecido com array). Array.from aceita qualquer coisa que tenha
+//   length (ou seja iterável) e cria um array REAL com esse tamanho.
+//   Como o objeto não tem as chaves 0, 1, 2, 3, 4, cada posição é lida como
+//   undefined:
+//     Array.from({ length: 5 }); // [ undefined, undefined, undefined, undefined, undefined ]
+//   Vantagem sobre new Array(5): não gera "empty items" (buracos), então
+//   métodos como map/forEach funcionam normalmente em todas as posições.
+//
+// O que é (_, i)?
+//   São os parâmetros da função de mapeamento (mapFn). Array.from chama essa
+//   função para cada posição passando (valorAtual, indice) — igual ao map():
+//     - 1º parâmetro "_" -> o valor atual do elemento (aqui sempre undefined).
+//       O nome "_" é só uma CONVENÇÃO para dizer "não vou usar este parâmetro".
+//       Não é palavra reservada: é um nome de variável válido como qualquer outro.
+//       Precisamos declará-lo mesmo sem usar, porque os parâmetros são
+//       POSICIONAIS: para chegar ao 2º (o índice), temos que "ocupar" o 1º.
+//     - 2º parâmetro "i" -> o índice da posição: 0, 1, 2, 3, 4.
+//   Passo a passo: i=0 -> 0*10=0 | i=1 -> 10 | i=2 -> 20 | i=3 -> 30 | i=4 -> 40
+//
+// Forma equivalente, mais verbosa:
+//   Array.from({ length: 5 }, function (valor, indice) { return indice * 10; });
+// Outro uso comum (sequência 1..5):
+//   Array.from({ length: 5 }, (_, i) => i + 1); // [ 1, 2, 3, 4, 5 ]
 
 // -----------------------------------------------------------------------------
 // 2. Acessando elementos: índice, length e at()
