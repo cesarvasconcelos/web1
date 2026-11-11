@@ -272,7 +272,10 @@ let notas = [25, 35, 45];
 console.log(typeof notas); // object  -> typeof não distingue array de objeto!
 console.log(Array.isArray(notas)); // true -> use Array.isArray() para saber se é array
 console.log(Array.isArray({ length: 0 })); // false
-notas["aluno"] = "Ana Silva"; // uma propriedade no array! (NÃO é recomendado)
+// PEGADINHA: { length: 0 } tem uma propriedade "length" e PARECE um array vazio, mas é um objeto comum.
+// Ter "length" (ou índices como 0, 1, 2) não faz de algo um array; só é array o que foi criado como array
+// ([], new Array(), Array.from()...). Por isso Array.isArray() é a forma confiável de testar.
+notas["aluno"] = "Ana Silva"; // cria uma NOVA propriedade "aluno" dinamicamente no array! (NÃO é recomendado)
 let nome = notas["aluno"]; // acessando valor da propriedade
 // ou ainda let nome = notas.aluno; // acessando valor da propriedade
 console.log(nome); // Ana Silva
@@ -300,6 +303,13 @@ for (const fruta of frutas) {
 }
 
 // c) for...of + entries(): valores E índices
+//    DEPOIS do "of": frutas.entries() devolve, a cada volta, um PAR [indice, valor]:
+//      [0, "Maçã"], [1, "Laranja"], [2, "Uva"]
+//    ANTES do "of": [i, fruta] desmonta (destructuring) cada par, pela POSIÇÃO:
+//      - 1º da esquerda (i)     recebe o 1º item do par -> o ÍNDICE
+//      - 2º da esquerda (fruta) recebe o 2º item do par -> o VALOR
+//    Os nomes "i" e "fruta" são livres; o que importa é a ordem: primeiro índice, depois valor.
+//    Atenção: no forEach a ordem é a inversa, (valor, indice) -> (fruta, i).
 for (const [i, fruta] of frutas.entries()) {
 	console.log(`${i}: ${fruta}`);
 }
@@ -316,7 +326,7 @@ for (const chave in notas) {
 }
 
 // -----------------------------------------------------------------------------
-// 8. Desestruturação de arrays (destructuring)  — imagens 8 e 9 desta pasta
+// 8. Desestruturação de arrays (destructuring)
 // -----------------------------------------------------------------------------
 console.log("\n=== 8. Destructuring ===");
 const nameData = ["Max", "Schwarz", "Mr", 30];
@@ -341,7 +351,7 @@ let q = "segundo";
 console.log(p, q); // segundo primeiro
 
 // -----------------------------------------------------------------------------
-// 9. Iterables x Arrays x Array-like objects (veja 1_iterables-vs-array-like.md)
+// 9. Iterables x Arrays x Array-like objects
 // -----------------------------------------------------------------------------
 console.log("\n=== 9. Iterables x Array-like ===");
 // Arrays são 'Iterables', ou seja, podem ser usados com for...of e spread (...)
