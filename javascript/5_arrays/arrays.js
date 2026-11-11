@@ -92,6 +92,11 @@ console.log(v4.at(-1)); // 5, o último elemento (forma moderna, ES2022)
 console.log(v4.at(-2)); // 3, o penúltimo
 // Por que at()? Porque v4[-1] NÃO funciona como em Python:
 console.log(v4[-1]); // undefined  ("-1" é tratado como nome de propriedade, que não existe)
+// Mas at() NÃO é a única forma de acessar o último elemento; ele é apenas a mais moderna:
+//   v4[v4.length - 1]  // a forma tradicional (e a única que também serve para ESCREVER)
+//   v4.at(-1)          // mais legível: não repete o nome do array nem faz a conta com length
+// Atenção: at() só LÊ. Para alterar o último elemento, use v4[v4.length - 1] = 9
+// Isto é, v4.at(-1) = 9 é um erro.
 
 // Modificando um elemento pelo índice:
 v4[0] = 200;
