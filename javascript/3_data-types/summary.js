@@ -21,7 +21,7 @@ console.log(typeof message); // "number"
 // - boolean   → true ou false                                                         (ver boolean.js)
 // - null      → tipo próprio, único valor: null ("nada", "vazio", "valor desconhecido") (ver null.js)
 // - undefined → tipo próprio, único valor: undefined ("valor não atribuído")          (ver undefined.js)
-// - symbol    → identificadores únicos (usados principalmente como chaves de objetos)
+// - symbol    → identificadores únicos (usados principalmente como chaves de objetos) (ver symbol.js)
 //               https://javascript.info/symbol
 
 // 1 tipo não-primitivo:
@@ -38,6 +38,7 @@ console.log(typeof Array.of("Ana", "Bruno")); // "object" ← arrays pertencem a
 // e mantido por compatibilidade. null NÃO é um object: ele tem seu próprio tipo.
 let nulo = null;
 console.log(typeof nulo); // "object" ← BUG histórico; null NÃO é um object
+console.log(nulo === null); // true → para testar null, use === null
 
 // typeof de uma função retorna "function", mas funções pertencem ao tipo object;
 // o typeof as trata de forma especial por conveniência, mesmo *não* existindo tipo "function".

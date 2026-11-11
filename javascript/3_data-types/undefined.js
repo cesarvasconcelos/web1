@@ -4,8 +4,10 @@
 
 // undefined também forma um tipo próprio, assim como null, com um único valor: undefined.
 // Significado: "nenhum valor foi atribuído".
-// É o valor que o JavaScript dá automaticamente a uma variável declarada,
-// mas não inicializada.
+// É o valor que o JavaScript dá automaticamente quando algo não recebeu valor, e.g.:
+// - uma variável declarada, mas não inicializada;
+// - uma propriedade que não existe no objeto;
+// - o retorno de uma função sem return (ou um parâmetro que não foi passado).
 
 // A documentação:
 // JavaScript distinguishes between null, which indicates a deliberate non-value
@@ -15,6 +17,11 @@
 let declaredOnly; // declarada, mas sem valor: o JavaScript atribui undefined sozinho
 console.log(declaredOnly); // undefined → é um valor e também um tipo de dado
 console.log(typeof declaredOnly); // "undefined"
+
+const pessoa = { nome: "Ana" };
+console.log(pessoa.idade); // undefined → propriedade inexistente
+function semRetorno() {}
+console.log(semRetorno()); // undefined → função sem return
 
 // É possível atribuir undefined explicitamente a uma variável, mas NÃO é recomendado
 // usar isso para tentar "apagar" a variável deixando-a sem valor

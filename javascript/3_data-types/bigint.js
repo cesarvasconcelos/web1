@@ -20,9 +20,9 @@ console.log(9007199254740991 + 2); // 9007199254740992 ← mesmo resultado! erro
 // O 'n' no final avisa ao JavaScript que é BigInt
 const bigNr = 9007199254740992n;
 // Se remover o 'n', NÃO há erro: vira um Number comum (2^53 ainda é representável).
-// Porém, a partir de 2^53 o Number já não é confiável para inteiros; ferramentas como
-// TypeScript/ESLint avisam: "Numeric literals with absolute values equal to 2^53 or
-// greater are too large to be represented accurately as integers."
+// Porém, a partir de 2^53 o Number já não é confiável para inteiros; o TypeScript
+// (e, portanto, o editor VS Code) avisa: "Numeric literals with absolute values
+// equal to 2^53 or greater are too large to be represented accurately as integers."
 console.log(bigNr, typeof bigNr); // 9007199254740992n bigint
 
 // outro exemplo:
@@ -49,6 +49,25 @@ try {
 // Teria de converter de number para BigInt para poder trabalhar com outro BigInt:
 const toBigInt = BigInt(intNr); // 255n
 console.log(bigNr + toBigInt); // 9007199254741247n
+// E de BigInt para number com Number() (pode perder precisão se o valor for grande):
+console.log(Number(10n)); // 10
+
+// Outras restrições do BigInt (MDN):
+// - o + unário não funciona: +1n lança TypeError (use Number(1n))
+// - as funções de Math não aceitam BigInt: Math.sqrt(4n) lança TypeError
+// - divisão por zero lança RangeError (com Number, 1 / 0 daria Infinity)
+// - BigInt() só aceita inteiros: BigInt(1.5) lança RangeError
+try {
+    console.log(1n / 0n);
+} catch (erro) {
+    console.log(erro.name + ":", erro.message); // RangeError: Division by zero
+}
+try {
+    console.log(BigInt(1.5));
+} catch (erro) {
+    console.log(erro.name + ":", erro.message); // RangeError: The number 1.5 cannot be converted to a BigInt because it is not an integer
+}
+// Curiosidade: o único BigInt falsy é 0n → Boolean(0n) é false (ver boolean.js)
 
 // Comparações entre number e bigint funcionam normalmente:
 console.log(1n < 2); // true

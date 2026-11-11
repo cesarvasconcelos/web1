@@ -22,6 +22,8 @@ console.log("unknown", typeof unknown); // "object" ← bug histórico do JavaSc
 // typeof null retorna "object" —> isso é um erro oficialmente reconhecido da linguagem,
 // mantido por compatibilidade. null NÃO é um object.
 // (ver null.js para mais detalhes)
+// Por isso, para testar se um valor é null, use === null (typeof não serve):
+console.log(unknown === null); // true
 
 // Math é um objeto embutido (built-in) que fornece operações matemáticas:
 console.log(typeof Math); // "object"
@@ -40,6 +42,10 @@ console.log(typeof typeof i); // "string" (typeof 7 → "number", e typeof "numb
 
 // typeof de uma variável que nem foi declarada não dá erro: retorna "undefined"
 console.log(typeof variavelQueNaoExiste); // "undefined"
+// Exceção (MDN): com let/const, usar typeof ANTES da linha da declaração lança
+// ReferenceError (a variável existe, mas está na "zona morta temporal", a TDZ):
+// console.log(typeof minhaVar); // ReferenceError: Cannot access 'minhaVar' before initialization
+// let minhaVar = 1;
 
 // Sintaxe: typeof x  ou  typeof(x) —> ambas equivalentes.
 // typeof é um OPERADOR, não uma função: os parênteses em typeof(x) são apenas de

@@ -30,6 +30,8 @@ console.log(nrToStr, typeof nrToStr); // 66 string
 console.log(String(undefined), typeof String(undefined)); // undefined string
 console.log(String(null), typeof String(null)); // null string
 console.log(String(false), typeof String(false)); // false string
+// Exceção: String(symbol) funciona, mas a conversão AUTOMÁTICA de um symbol para
+// string (e.g., "texto" + symbol) lança TypeError (ver symbol.js)
 
 // Number(): tenta converter para um data type number. Se não conseguir, retorna
 // NaN. A conversão explícita é muito comum ao ler valores de fontes baseadas
@@ -38,6 +40,7 @@ let strToNr = "1234";
 let pass = "1234***";
 strToNr = Number(strToNr);
 // strToNr = +strToNr; // uma dica de como converter de string -> number só colocando '+' na frente
+// (o + unário faz a mesma conversão que Number())
 pass = Number(pass);
 console.log(strToNr, typeof strToNr); //1234 number
 console.log(pass, typeof pass); //NaN number
@@ -64,15 +67,29 @@ console.log(Number("   123   ")); // 123 (espaços do início e do fim são igno
 console.log(Number("123z")); // NaN (erro ao ler o "z")
 console.log(Number(" \n\t ")); // 0 (só espaços em branco → string vazia → 0)
 
+// Number() × parseInt() / parseFloat() (ver converting-parseFloat-vs-Number.png)
+// Number() exige que a string INTEIRA seja um número válido; já parseInt/parseFloat
+// leem o número do INÍCIO da string e param no primeiro caractere inválido.
+// MDN: "parseFloat() is more lenient than Number() because it ignores trailing
+// invalid characters, which would cause Number() to return NaN."
+console.log(Number("3.14 is a pi value")); // NaN
+console.log(parseFloat("3.14 is a pi value")); // 3.14
+console.log(parseInt("3.14 is a pi value")); // 3 (parseInt só lê a parte inteira)
+console.log(Number("12px"), parseInt("12px")); // NaN 12 (útil para valores como os de CSS)
+console.log(Number(""), parseFloat("")); // 0 NaN ← diferença importante!
+console.log(Number("1e3"), parseInt("1e3"), parseFloat("1e3")); // 1000 1 1000
+// Dica: em parseInt, informe sempre a base (radix): parseInt("08", 10) → 8
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
+
 // Boolean(): irá converter para boolean, retornando true para qualquer coisa que
-// não seja false, null, undefined, 0 (number), uma string vazia e NaN.
+// não seja false, null, undefined, 0, -0, 0n (BigInt zero), uma string vazia e NaN.
 // Regra intuitiva: valores "vazios" viram false; todo o resto vira true.
 // Acontece automaticamente em operações lógicas (if, ||, &&, !...)
 
 // A documentação: https://developer.mozilla.org/en-US/docs/Glossary/Falsy
-// Any value can be converted to a boolean according to the following rules:
-// false, 0, empty strings(""), NaN, null, and undefined all become false.
-// All other values become true.
+// MDN: "all values are truthy except false, 0, -0, 0n, "", null, undefined, NaN,
+// and document.all." (document.all é um caso especial e legado dos navegadores)
 // Lembrar que operadores abaixo podem ser usados com booleans
 // && (logical and), || (logical or), and ! (logical not)
 // So remember: Javascript tries to coerce values to a Boolean if a Boolean is required.
@@ -140,11 +157,14 @@ console.log(Boolean(coordXY)); // true
 // Exemplo 1: quero imprimir ou a entrada válida digitada (e.g., em um HTML) ou uma frase default
 // Com || (OR) está procurando truthy, quem for true/truthy, já será retornado ou o último se todos forem falsy
 let entradaDigitada = ""; // falsy
-console.log(entradaDigitada || "<< Entrada inválida >>");
+console.log(entradaDigitada || "<< Entrada inválida >>"); // << Entrada inválida >>
 entradaDigitada = null; // falsy
-console.log(entradaDigitada || "<< Entrada inválida >>");
+console.log(entradaDigitada || "<< Entrada inválida >>"); // << Entrada inválida >>
 entradaDigitada = "Ana Silva"; // truthy
-console.log(entradaDigitada || "<< Entrada inválida >>");
+console.log(entradaDigitada || "<< Entrada inválida >>"); // Ana Silva
+// Atenção: com ||, QUALQUER falsy é trocado pelo default, inclusive 0 (e.g., uma
+// quantidade digitada igual a 0). Para trocar só null/undefined, existe o operador
+// ?? (nullish coalescing): https://javascript.info/nullish-coalescing-operator
 
 // Exemplo 2: imagine que você tem uma lista de materiais escolares para os alunos bolsistas, mas só
 // quer entregar essa lista para quem tem um email cadastrado (ou seja, um email válido). Se o email
@@ -157,25 +177,27 @@ function getMateriaisEscolares(email) {
 }
 // simulando
 let emailAlunoBolsista = "pedro@gmail.com";
-console.log(getMateriaisEscolares(emailAlunoBolsista)); // [Caneta,Livro]
+console.log(getMateriaisEscolares(emailAlunoBolsista)); // [ 'Caneta', 'Livro' ]
 emailAlunoBolsista = null;
 console.log(getMateriaisEscolares(emailAlunoBolsista)); // null (não false —> retorna o próprio valor falsy)
 
 // Em Java, por exemplo, não há a ideia de truthy ou falsy.
-// O exemplo acima resultaria em erro
+// O exemplo acima resultaria em erro de compilação (em Java, && só aceita boolean)
 
 // testando valores truthy/false com || e &&
-console.log("" || null); // null,  usando OR, o primeiro truthy irá decidir o resultado da expressão e será retornado ou o último se todos forem falsy;
-console.log("ABC" || "DEF"); // ABC, usando OR, o primeiro truthy irá decidir o resultado da expressão e será retornado;
-console.log("ABC" && "DEF"); // DEF, usando && (AND), o primeiro falsy irá decidir o resultado da expressão e será retornado;
-console.log("" && "DEF"); // '', usando && (AND), o primeiro falsy irá decidir o resultado da expressão e será retornado;
-console.log("DEF" && 0); // 0, usando && (AND), o primeiro falsy irá decidir o resultado da expressão e será retornado;
+console.log("" || null); // null → OR: nenhum truthy encontrado, desiste e retorna o último
+console.log("ABC" || "DEF"); // ABC → OR: "ABC" já é truthy, para e retorna ele
+console.log("ABC" && "DEF"); // DEF → AND: nenhum falsy encontrado, desiste e retorna o último
+console.log("" && "DEF"); // (linha em branco: string vazia) → AND: "" é falsy, para e retorna ele
+console.log("DEF" && 0); // 0 → AND: 0 é o primeiro falsy, para e retorna ele
 
 // Resumo das pegadinhas mais comuns (javascript.info):
 //   Number(undefined) → NaN (e não 0)
 //   Number("")        → 0
 //   Boolean("0")      → true
 //   Boolean(" ")      → true
+//   Boolean(NaN)      → false (NaN é number ≠ 0, mas é falsy)
+//   parseFloat("")    → NaN (enquanto Number("") → 0)
 // Mais sobre || e &&: https://javascript.info/logical-operators
 // MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR
 //      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND

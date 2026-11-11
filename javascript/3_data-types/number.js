@@ -22,7 +22,7 @@
 // um inteiro maior ou menor que isso, deve-se usar BigInt (ver bigint.js)
 console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991  → 2^53 - 1
 console.log(Number.MIN_SAFE_INTEGER); // -9007199254740991 → -(2^53 - 1)
-console.log(Number.MAX_VALUE); // 1.7976931348623157e+308 (maior Number possível, mas sem precisão de inteiro)
+console.log(Number.MAX_VALUE); // 1.7976931348623157e+308 (maior Number possível; muito acima da faixa segura de inteiros)
 
 // Number pode representar números inteiros, decimais, exponenciais, em octal,
 // hexadecimal e números binários;
@@ -75,9 +75,11 @@ console.log(3 * NaN); // NaN
 console.log("abc" / 2 - 1); // NaN
 console.log(NaN ** 0); // 1 —> única exceção: qualquer valor elevado a 0 é 1
 
-// Matemática em JavaScript é "segura": podemos dividir por zero, tratar strings
-// não numéricas como números etc. O script nunca morre com um erro fatal;
-// no pior caso, o resultado é NaN.
+// Matemática com Number em JavaScript é "segura": podemos dividir por zero, tratar
+// strings não numéricas como números etc. O script não morre com um erro fatal;
+// no pior caso, o resultado é NaN (ou Infinity).
+// Atenção: isso vale para Number. Com BigInt é diferente: 1n / 0n lança RangeError
+// e misturar BigInt com Number lança TypeError (ver bigint.js).
 
 // Para verificar se um valor é NaN, use Number.isNaN()
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN
@@ -86,6 +88,9 @@ console.log(NaN === NaN); // false ← por isso a comparação não funciona
 console.log(Number.isNaN(NaN)); // true
 console.log(Number.isNaN("abc" / 2)); // true
 console.log(Number.isNaN(42)); // false
+// Cuidado: a função global isNaN() (sem "Number.") primeiro CONVERTE o valor para number:
+console.log(isNaN("abc")); // true  → "abc" vira NaN na conversão, era pra ser false → "abc" é uma string, não o valor NaN
+console.log(Number.isNaN("abc")); // false → "abc" é uma string, não o valor NaN
 
 // Atenção a precisão de decimais (consequência do formato IEEE 754):
 console.log(0.1 + 0.2); // 0.30000000000000004 (não é bug do JS; acontece em Java, Python...)
