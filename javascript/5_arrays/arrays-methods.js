@@ -1,12 +1,12 @@
 // =============================================================================
 // os principais built-in methods de arrays
-// Execute com: node 1_javascript-fundamentals/5_arrays/arrays-methods.js
+// Execute com: node arrays-methods.js
 //
 // Consultar a documentação a seguir:
 //   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 //   https://javascript.info/array-methods
 //
-// 💡 A PERGUNTA MAIS IMPORTANTE sobre qualquer método de array:
+// A PERGUNTA MAIS IMPORTANTE sobre qualquer método de array:
 //    "Ele MODIFICA (muta) o array original ou RETORNA um novo valor?"
 //    MUTAM o original: push, pop, shift, unshift, splice, sort, reverse, fill, copyWithin
 //    NÃO mutam:       slice, concat, map, filter, reduce, find, includes, join, flat,
@@ -21,7 +21,7 @@ console.log("\n=== 1. push / pop / unshift / shift ===");
 const matérias = ["biologia"];
 let tamanho = matérias.push("matemática", "química", "história"); // append e return length = 4
 console.log(matérias, "tamanho=", tamanho); // [ 'biologia', 'matemática', 'química', 'história' ] tamanho= 4
-// ⚠️ Repare: push retorna o NOVO LENGTH, e não o array! Erro comum:
+// Repare: push retorna o NOVO LENGTH, e não o array! Erro comum:
 //    const novo = arr.push(x); // 'novo' é um número, não um array
 
 // -----------------------------------------------------------------------------
@@ -177,7 +177,10 @@ console.log(idades.some((idade) => idade >= 18)); // true  -> ALGUM é maior de 
 console.log(idades.every((idade) => idade >= 18)); // false -> TODOS são maiores de idade?
 // Ambos param assim que a resposta é conhecida (short-circuit).
 // Curiosidade: em array vazio, some() -> false e every() -> true ("verdade vazia").
-console.log([].some((n) => n > 0), [].every((n) => n > 0)); // false true
+console.log(
+	[].some((n) => n > 0),
+	[].every((n) => n > 0),
+); // false true
 
 // -----------------------------------------------------------------------------
 // 6. FILTRAR e TRANSFORMAR: filter, map, forEach, reduce (NÃO mutam)
@@ -196,18 +199,20 @@ const quadrados = arr2.map((num) => num ** 2);
 console.log(quadrados); // [ 1, 4, 9, 16 ]
 const nomesHeróis = ["Bilbo", "Gandalf", "Nazgul"];
 console.log(nomesHeróis.map((nome) => nome.length)); // [ 5, 7, 6 ]
-// ⚠️ cuidado ao retornar objetos com arrow function: use parênteses!
+// cuidado ao retornar objetos com arrow function: use parênteses!
 console.log(nomesHeróis.map((nome) => ({ nome }))); // [ { nome: 'Bilbo' }, ... ]
 
 // forEach: apenas EXECUTA algo para cada elemento; retorna SEMPRE undefined
-const retorno = arr2.forEach((num, idx) => console.log(`arr2[${idx}] = ${num}`));
+const retorno = arr2.forEach((num, idx) =>
+	console.log(`arr2[${idx}] = ${num}`),
+);
 console.log(retorno); // undefined -> se precisa de um array de resultado, use map
 // Não é possível interromper um forEach com break; se precisar parar, use for...of ou some/find.
 
 // reduce: "reduz" o array a UM único valor (veja 6_array-reduce.md)
 const soma = arr2.reduce((acumulador, atual) => acumulador + atual, 0);
 console.log(soma); // 10
-// ⚠️ sem valor inicial em array vazio => TypeError
+// sem valor inicial em array vazio => TypeError
 try {
 	[].reduce((a, b) => a + b);
 } catch (erro) {
@@ -240,7 +245,7 @@ let nomes = ["José", "Alberto", "Fátima", "Carla", "Bruno"];
 nomes.sort();
 console.log(nomes); // [ 'Alberto', 'Bruno', 'Carla', 'Fátima', 'José' ]
 
-// ⚠️ Cuidado com acentos/maiúsculas: a comparação é por código UTF-16
+// Cuidado com acentos/maiúsculas: a comparação é por código UTF-16
 nomes = ["José", "Álvaro", "bruno", "Carla"];
 console.log([...nomes].sort()); // [ 'Carla', 'José', 'bruno', 'Álvaro' ] ERRADO para humanos!
 // Solução: localeCompare, que compara respeitando as regras do idioma
@@ -308,7 +313,7 @@ console.log(range); // [2, 3]
 console.log(arr.slice(-2)); // [ 3, 4 ] -> os dois últimos (índice negativo conta do fim)
 // dica: pode usar slice() para copiar e retornar um novo array
 // const newArray = arr.slice(); // sem argumentos um novo array/cópia do original será criado e retornado
-// 🧠 Para não confundir: sLice = "Lê" um pedaço (não muta); sPlice = "Põe/tira" (muta).
+// Para não confundir: sLice = "Lê" um pedaço (não muta); sPlice = "Põe/tira" (muta).
 
 // outra forma de combinar com spread operator
 // spread operator: it splits an array into a comma separated list of values

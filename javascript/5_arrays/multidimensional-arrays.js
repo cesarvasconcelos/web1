@@ -1,6 +1,6 @@
 // =============================================================================
 // arrays multidimensionais (arrays de arrays)
-// Execute com: node 1_javascript-fundamentals/5_arrays/multidimensional-arrays.js
+// Execute com: node multidimensional-arrays.js
 //
 // JavaScript NÃO tem um tipo "matriz" nativo: uma matriz é simplesmente um
 // array cujos elementos também são arrays.
@@ -37,22 +37,28 @@ console.log("colunas =", multiArray[0].length); // 3
 // CORREÇÃO: [new Array(3), new Array(4)] NÃO é uma matriz 3x4!
 // É um array com 2 linhas: a 1ª com 3 posições e a 2ª com 4 posições (uma matriz "irregular").
 let duasLinhas = [new Array(3), new Array(4)];
-duasLinhas[0][0] = 1; duasLinhas[0][1] = 2; duasLinhas[0][2] = 3;
+duasLinhas[0][0] = 1;
+duasLinhas[0][1] = 2;
+duasLinhas[0][2] = 3;
 
-duasLinhas[1][0] = 4; duasLinhas[1][1] = 5;
-duasLinhas[1][2] = 6; duasLinhas[1][3] = 7;
+duasLinhas[1][0] = 4;
+duasLinhas[1][1] = 5;
+duasLinhas[1][2] = 6;
+duasLinhas[1][3] = 7;
 
 console.log(duasLinhas); // [ [ 1, 2, 3 ], [ 4, 5, 6, 7 ] ]
 
 // Uma matriz 3x4 de verdade (3 linhas x 4 colunas), preenchida com zeros:
 const LINHAS = 3;
 const COLUNAS = 4;
-let matriz3por4 = Array.from({ length: LINHAS }, () => new Array(COLUNAS).fill(0));
+let matriz3por4 = Array.from({ length: LINHAS }, () =>
+	new Array(COLUNAS).fill(0),
+);
 matriz3por4[1][2] = 9; // linha 1, coluna 2
 console.log(matriz3por4);
 // [ [ 0, 0, 0, 0 ], [ 0, 0, 9, 0 ], [ 0, 0, 0, 0 ] ]
 
-// ⚠️ ARMADILHA CLÁSSICA: fill() com um array coloca a MESMA referência em todas as linhas!
+// ARMADILHA CLÁSSICA: fill() com um array coloca a MESMA referência em todas as linhas!
 let matrizErrada = new Array(3).fill(new Array(4).fill(0));
 matrizErrada[1][2] = 9; // a intenção era mudar só a linha 1...
 console.log(matrizErrada);
@@ -93,7 +99,9 @@ const dobro = multiArray.map((linha) => linha.map((valor) => valor * 2));
 console.log(dobro); // [ [ 2, 4, 6 ], [ 8, 10, 12 ], [ 14, 16, 18 ] ]
 
 // e) transposta (linhas viram colunas)
-const transposta = multiArray[0].map((_, j) => multiArray.map((linha) => linha[j]));
+const transposta = multiArray[0].map((_, j) =>
+	multiArray.map((linha) => linha[j]),
+);
 console.log(transposta); // [ [ 1, 4, 7 ], [ 2, 5, 8 ], [ 3, 6, 9 ] ]
 
 // f) console.table exibe a matriz em formato de tabela (ótimo para estudar!)
@@ -103,11 +111,7 @@ console.table(multiArray);
 // Mais de 2 dimensões
 // -----------------------------------------------------------------------------
 // JavaScript não limita os níveis na 'montagem de arrays'
-let multiMultiArray = [
-	multiArray,
-	multiArray,
-	multiArray,
-];
+let multiMultiArray = [multiArray, multiArray, multiArray];
 /*
 [
   [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ],
@@ -120,10 +124,13 @@ console.log(multiMultiArray);
 // segundo array, depois terceiro array, depois elemento no index=0
 console.log("multiMultiArray[1][2][0]= ", multiMultiArray[1][2][0]); // 7
 
-// ⚠️ Atenção: as 3 "camadas" acima são a MESMA referência (multiArray)!
+// Atenção: as 3 "camadas" acima são a MESMA referência (multiArray)!
 // Alterar uma camada altera todas:
 console.log(multiMultiArray[0] === multiMultiArray[2]); // true
 // Para ter camadas independentes, faça uma cópia profunda de cada uma:
-let camadasIndependentes = [structuredClone(multiArray), structuredClone(multiArray)];
+let camadasIndependentes = [
+	structuredClone(multiArray),
+	structuredClone(multiArray),
+];
 camadasIndependentes[0][0][0] = 100;
 console.log(camadasIndependentes[1][0][0]); // 1 -> a outra camada não foi afetada

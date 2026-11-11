@@ -1,6 +1,6 @@
 // =============================================================================
 // ARRAYS EM JAVASCRIPT — fundamentos
-// Execute com: node 1_javascript-fundamentals/5_arrays/arrays.js
+// Execute com: node arrays.js
 //
 // Referências:
 //   https://javascript.info/array
@@ -58,7 +58,7 @@ let vg = Array.of("JavaScript", "C++"); // também é possível via factory meth
 let vh = Array.of(); // == []; pouco comum, mas pode; length = 0
 console.log(va, vb, vc, vd, ve.length, vf.length, vg, vh);
 
-// ⚠️ ARMADILHA de new Array(...) / Array(...):
+// ARMADILHA de new Array(...) / Array(...):
 // com UM único argumento numérico, ele vira o LENGTH (e não um elemento!)
 console.log(new Array(3)); // [ <3 empty items> ]  -> length 3, nenhum elemento
 console.log(new Array(3, 4)); // [ 3, 4 ]            -> dois argumentos = dois elementos
@@ -188,7 +188,7 @@ cloneProdutos.splice(0, 2); // remover a partir do index 0, 2 elementos
 console.log(cloneProdutos); // [ 'Caderno', 'Borracha' ] -> a cópia foi alterada
 console.log(produtos); // produtos não foi alterado desta vez
 
-// ⚠️ ATENÇÃO: spread, slice() e Array.from() fazem cópia RASA (shallow copy).
+// ATENÇÃO: spread, slice() e Array.from() fazem cópia RASA (shallow copy).
 // Se o array guarda OBJETOS, a cópia guarda as MESMAS referências para esses objetos!
 // (veja a imagem 10_arrays-of-objects-deep-copy.png)
 const persons = [
@@ -266,7 +266,7 @@ for (const [i, fruta] of frutas.entries()) {
 // d) forEach: executa uma função para cada elemento (não dá pra usar break!)
 frutas.forEach((fruta, i) => console.log(i, fruta));
 
-// e) ⚠️ EVITE for...in em arrays (javascript.info):
+// e) EVITE for...in em arrays (javascript.info):
 //    - itera sobre TODAS as chaves, inclusive propriedades extras (como 'aluno' acima)
 //    - as chaves são STRINGS ("0", "1", ...) e não números
 //    - é otimizado para objetos genéricos, sendo bem mais lento em arrays
