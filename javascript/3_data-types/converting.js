@@ -162,9 +162,19 @@ entradaDigitada = null; // falsy
 console.log(entradaDigitada || "<< Entrada inválida >>"); // << Entrada inválida >>
 entradaDigitada = "Ana Silva"; // truthy
 console.log(entradaDigitada || "<< Entrada inválida >>"); // Ana Silva
-// Atenção: com ||, QUALQUER falsy é trocado pelo default, inclusive 0 (e.g., uma
-// quantidade digitada igual a 0). Para trocar só null/undefined, existe o operador
-// ?? (nullish coalescing): https://javascript.info/nullish-coalescing-operator
+// Atenção: o "default" é o valor à direita do || (aqui, "<< Entrada inválida >>").
+// Com ||, QUALQUER falsy à esquerda (false, 0, "", null, undefined, NaN) faz o JS usar o default.
+// Só que às vezes 0 ou "" são valores VÁLIDOS (e.g., o usuário digitou quantidade 0), e não
+// queremos trocá-los. Para trocar só null/undefined, existe o operador ?? (nullish coalescing):
+// https://javascript.info/nullish-coalescing-operator
+//
+// Exemplo rápido (quantidade digitada = 0, que é um valor válido):
+let quantidadeDigitada = 0;
+console.log(quantidadeDigitada || 10); // 10 (0 é falsy, então foi trocado pelo default — indesejado)
+console.log(quantidadeDigitada ?? 10); // 0  (0 não é null/undefined, então é mantido)
+console.log(null ?? 10); // 10 (null → usa o default)
+console.log(undefined ?? 10); // 10 (undefined → usa o default)
+console.log("" ?? "vazio"); // "" (string vazia é mantida; com || viraria "vazio")
 
 // Exemplo 2: imagine que você tem uma lista de materiais escolares para os alunos bolsistas, mas só
 // quer entregar essa lista para quem tem um email cadastrado (ou seja, um email válido). Se o email
