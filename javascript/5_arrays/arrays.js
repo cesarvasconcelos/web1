@@ -158,10 +158,10 @@ a[10] = "fox";
 console.log(a.length); // 11 (= maior índice 10 + 1), embora existam apenas 4 elementos
 console.log(a); // [ 'dog', 'cat', 'hen', <7 empty items>, 'fox' ]
 
-// CORREÇÃO IMPORTANTE: 'length' NÃO mede memória alocada nem "células de armazenamento".
-// Ele é simplesmente (maior índice + 1). Como a engine guarda os dados internamente
-// (bloco contíguo com buracos ou hashtable) é um detalhe de implementação.
-// Logo, em um sparse array, há "buracos/gaps" e o length não especifica a quantidade de elementos.
+// IMPORTANTE: 'length' NÃO é a quantidade de elementos do array.
+// Ele é simplesmente (maior índice + 1).
+// Em um array normal, sem buracos, os dois valores coincidem. Em um sparse array,
+// existem "buracos/gaps" (posições vazias), então length é MAIOR que a quantidade de elementos.
 
 // Outro exemplo:
 let s = new Array(5); // Não há elementos e length = 5
