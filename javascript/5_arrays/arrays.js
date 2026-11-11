@@ -211,10 +211,9 @@ console.log(produtos); // produtos não foi alterado desta vez
 
 // ATENÇÃO: spread, slice() e Array.from() fazem cópia RASA (shallow copy).
 // Se o array guarda OBJETOS, a cópia guarda as MESMAS referências para esses objetos!
-// (veja a imagem 10_arrays-of-objects-deep-copy.png)
 const persons = [
-	{ name: "Max", age: 30 },
-	{ name: "Manuel", age: 31 },
+	{ name: "Max", age: 30 }, // o objeto em si é guardado no heap, e o array guarda apenas a referência para ele
+	{ name: "Manuel", age: 31 }, // outro objeto, outra referência
 ];
 const shallow = [...persons];
 shallow[0].age = 99; // altera o objeto que é COMPARTILHADO pelos dois arrays
@@ -222,8 +221,18 @@ console.log(persons[0].age); // 99 (!!) o original também mudou
 persons[0].age = 30; // desfazendo
 
 // Soluções para cópia PROFUNDA (deep copy):
-// a) map criando novos objetos (como na imagem 10). Obs.: map JÁ retorna um array novo,
-//    então o [... ] em volta do map, visto na imagem, é redundante.
+// a) map criando um NOVO objeto para cada elemento (o spread { ...person } copia as propriedades).
+//    Obs.: map JÁ retorna um array novo, então não é necessário colocar [... ] em volta do map.
+//    Passo a passo de persons.map((person) => ({ ...person })):
+//      1) map percorre persons e chama a função uma vez por elemento; "person" é um objeto do array:
+//         1ª chamada: person = { name: "Max", age: 30 } | 2ª chamada: person = { name: "Manuel", age: 31 }
+//      2) { ...person } cria um objeto NOVO e copia para ele as propriedades de person (name e age).
+//         É o spread de OBJETO: o resultado é outro objeto, em outro lugar da memória.
+//      3) O que a função retorna vira o elemento correspondente do array novo.
+//         Os parênteses em ({ ... }) mostram ao JS que "{" abre um objeto, e não o corpo da função.
+//      4) No fim, map devolve um array novo com os objetos copiados, guardado em copiedPersons.
+//    Comparando: [...persons] copia só o array (os objetos dentro continuam os mesmos);
+//    persons.map((p) => ({ ...p })) copia o array e também cada objeto dentro dele.
 const copiedPersons = persons.map((person) => ({ ...person }));
 // b) structuredClone (nativo, copia qualquer profundidade) — a forma moderna recomendada
 const deepCopy = structuredClone(persons);
