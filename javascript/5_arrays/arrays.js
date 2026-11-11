@@ -245,6 +245,17 @@ console.log([1, 2] === [1, 2]); // false (dois objetos diferentes na memória)
 const ref = [1, 2];
 console.log(ref === ref); // true (mesma referência)
 // Para comparar conteúdo, compare elemento a elemento (ex.: com every):
+// Passo a passo de iguais(x, y): arrow function que recebe dois arrays e devolve true ou false.
+//   1) x.length === y.length -> compara os tamanhos. Se forem diferentes, o resultado já é false
+//      e o && faz curto-circuito: o lado direito nem é executado.
+//   2) x.every((v, i) => v === y[i]) -> só roda se os tamanhos forem iguais.
+//      every percorre x chamando a função para cada elemento: "v" é o elemento de x e "i" é o índice.
+//      v === y[i] compara esse elemento com o de y na mesma posição.
+//      every devolve true se TODAS as comparações deram true (e para no primeiro false).
+//   Por que checar o tamanho primeiro? Sem isso, iguais([1, 2], [1, 2, 3]) daria true,
+//   pois every só percorre x e nunca olha o 3 extra de y.
+//   Limitação: === compara cada elemento por referência; com objetos/arrays dentro, como [[1], [2]],
+//   dará false mesmo com conteúdo igual. Para valores primitivos (números, strings), funciona bem.
 const iguais = (x, y) => x.length === y.length && x.every((v, i) => v === y[i]);
 console.log(iguais([1, 2], [1, 2])); // true
 // E nunca use == entre arrays e primitivos: [] == 0 é true, 0 == "0" é true, mas [] == "0" é false!
