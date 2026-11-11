@@ -184,8 +184,8 @@ console.log(1 in comBuraco, 1 in comUndefined); // false true  (...mas não são
 // Alguns métodos (forEach, map, filter, reduce...) PULAM buracos; for...of e find() NÃO pulam.
 
 // Em JavaScript, não há array-out-of-bounds exception
-console.log(a[-1]); // undefined
-console.log(typeof a[90]); // undefined
+console.log(a[-1]); // a[-1]: a propriedade -1 existe? R: undefined (NÃO é o último como em Python: -1 não é um índice válido, use a.at(-1))
+console.log(typeof a[90]); // typeof a[90]: o que tem no índice 90 de a? R: nada, então o tipo é "undefined"
 
 // -----------------------------------------------------------------------------
 // 5. Referência x Cópia (MUITO importante!)
