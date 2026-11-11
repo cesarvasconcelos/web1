@@ -67,19 +67,18 @@ console.log(Array.of(3)); // [ 3 ]                   -> Array.of NÃO tem essa a
 
 // Criando arrays já preenchidos:
 console.log(new Array(3).fill(0)); // [ 0, 0, 0 ]
-console.log(Array.from([1, 2, 3, 4, 5], (valor) => valor * 10)); // [ 10, 20, 30, 40, 50 ]
+console.log(Array.from([1, 2, 3, 4, 5], (valor, indice) => valor * indice)); // [ 0, 2, 6, 12, 20 ]
 // Array.from(origem, mapFn): cria um array NOVO a partir de "origem".
 //   - 1º argumento: um array (ou outro iterável, como uma string).
 //   - 2º argumento (opcional): uma função aplicada a CADA elemento, que recebe
-//     (valor, indice), igual ao map(). Aqui só usamos o "valor".
+//     (valor, indice), igual ao map():
+//       - "valor": o valor do elemento da origem naquela posição.
+//       - "indice": a posição do elemento (0, 1, 2, ...).
 //
-// Passo a passo: 1*10=10 | 2*10=20 | 3*10=30 | 4*10=40 | 5*10=50
+// Passo a passo (valor * indice): 1*0=0 | 2*1=2 | 3*2=6 | 4*3=12 | 5*4=20
 //
 // Sem a função, Array.from apenas copia o array:
 //   Array.from([1, 2, 3]); // [ 1, 2, 3 ] (cópia nova, não a mesma referência)
-//
-// Usando o índice (2º parâmetro da função):
-//   Array.from(["a", "b", "c"], (valor, indice) => `${indice}:${valor}`); // [ '0:a', '1:b', '2:c' ]
 
 // -----------------------------------------------------------------------------
 // 2. Acessando elementos: índice, length e at()
