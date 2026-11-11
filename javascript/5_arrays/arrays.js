@@ -186,6 +186,14 @@ console.log(s); // [ <1000 empty items>, 32 ]
 let comBuraco = [1, , 3]; // índice 1 é um buraco (empty slot)
 let comUndefined = [1, undefined, 3]; // índice 1 existe e vale undefined
 console.log(comBuraco[1], comUndefined[1]); // undefined undefined  (lendo, parecem iguais...)
+// OPERADOR `in`: verifica se a CHAVE (índice ou propriedade) EXISTE no objeto e retorna true/false.
+// Sintaxe: chave in objeto   ->   1 in comBuraco  (o índice 1 existe?)
+// - 1 in comBuraco é false, porque o índice 1 é um "empty slot".
+// - 1 in comUndefined é true, porque o índice 1 existe com valor undefined.
+// Por isso `in` distingue "ausente" de "presente com valor undefined", algo que arr[i] não faz.
+// Também funciona com objetos: 'nome' in pessoa.
+// Atenção: `in` consulta também a cadeia de protótipos ('toString' in {} -> true).
+// Para checar apenas as propriedades próprias, use Object.hasOwn(obj, chave).
 console.log(1 in comBuraco, 1 in comUndefined); // false true  (...mas não são!)
 // Alguns métodos (forEach, map, filter, reduce...) PULAM buracos; for...of e find() NÃO pulam.
 
